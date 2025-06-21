@@ -1,4 +1,5 @@
 footer {
+  font-family: var(--text-font);
   background-color: var(--primary-color);
   display: flex;
   justify-content: space-between;
@@ -9,20 +10,30 @@ footer {
   padding: 6px 41px;
   width: calc(100% + 50px);
   transform: translateX(-25px);
-  box-shadow: 0px 4px 6px 5px rgba(129, 129, 129, 0.4) inset;
+  box-shadow: 0px 6px 6px 4px rgba(129, 129, 129, 0.4) inset;
 
-  img {
-    background: linear-gradient(
+  a {
+    font-family: var(--text-font);
+  }
+
+  a:first-of-type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(
       35deg,
       rgba(217, 217, 217, 1) 0%,
       rgba(115, 115, 115, 1) 100%
     );
     border-radius: 50%;
-    display: flex;
+    width: 32px;
+    height: 32px;
+  }
+
+  img {
+    width: 18px;
     justify-content: center;
     align-items: center;
-    padding: 8px;
-    box-shadow: 1px 1px 5px rgba(227, 227, 227, 0.15);
   }
 
   ul {
@@ -30,9 +41,7 @@ footer {
   }
 
   li p {
-    text-decoration: none;
     line-height: 1rem;
-    color: #ededed;
     margin: 0;
   }
 }
@@ -47,9 +56,10 @@ footer {
       "img copyr t2";
     padding: 12px 41px;
 
-    a {
+    a:first-of-type {
       align-items: center;
       grid-area: img;
+      text-align: left;
     }
 
     ul {
