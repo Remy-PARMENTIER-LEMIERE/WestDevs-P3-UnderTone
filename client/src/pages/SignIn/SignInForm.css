@@ -1,4 +1,4 @@
-.signinForm-container {
+.signin-page {
   min-height: calc(100vh - 86px);
   display: flex;
   justify-content: center;
@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  padding: 32px;
 
   a {
     font-family: "Sen", sans-serif;
@@ -27,7 +28,7 @@
   height: 35px;
   width: 150px;
   border-radius: 20px;
-  padding: 5px 5px 5px 5px;
+  padding: 5px;
   background-color: rgba(86, 59, 111, 1);
   border: rgba(86, 59, 111, 1) 1px solid;
   box-shadow: 6px 4px 4px 0 rgba(0, 0, 0, 0.4);
@@ -47,21 +48,20 @@
     0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.signinform {
+.signin-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   margin-top: 20px;
 }
 
-.inputGroup {
+.input-group {
   font-family: "Segoe UI", sans-serif;
   margin: 1em 0 1em 0;
   max-width: 190px;
   position: relative;
 }
 
-.inputGroup input {
+.input-group input {
   font-size: 100%;
   padding: 0.8em;
   outline: none;
@@ -71,7 +71,7 @@
   width: 100%;
 }
 
-.inputGroup label {
+.input-group label {
   font-size: 100%;
   position: absolute;
   left: 0;
@@ -82,7 +82,7 @@
   color: rgb(200, 200, 200);
 }
 
-.inputGroup :is(input:focus, input:valid) ~ label {
+.input-group :is(input:focus, input:valid) ~ label {
   transform: translateY(-80%) scale(0.9);
   margin: 0em;
   margin-left: 1.3em;
@@ -90,18 +90,18 @@
   background-color: transparent;
 }
 
-.inputGroup :is(input:focus, input:valid) {
-  border-color: rgb(150, 150, 200);
+.input-group :is(input:focus, input:valid) {
+  border-color: rgba(86, 59, 111, 1);
 }
 
-.customRadioHolder {
+.custom-radio-holder {
   margin: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.customRadio {
+.custom-radio {
   width: fit-content;
   position: relative;
   overflow: hidden;
@@ -135,7 +135,7 @@
   min-width: 55px;
 }
 
-.customRadio .inner {
+.custom-radio .inner {
   text-align: center;
   width: 70px;
   font-size: 18px;
@@ -149,7 +149,7 @@
   position: relative;
 }
 
-.customRadio:hover {
+.custom-radio:hover {
   background-color: #2c2c2c;
   color: white;
   box-shadow:
@@ -161,27 +161,27 @@
     ) 0px 2px 4px 1px, rgba(255, 255, 255, 0.17) 0px 3px 1px 0px inset;
 }
 
-.customRadio:hover .inner {
+.custom-radio:hover .inner {
   transform: translateY(-1px);
 }
 
-.customRadioWrapper:first-of-type .customRadio {
+.custom-radio-wrapper:first-of-type .custom-radio {
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   border-right: 0px;
 }
 
-.customRadioWrapper:last-of-type .customRadio {
+.custom-radio-wrapper:last-of-type .custom-radio {
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
   border-left: 0px;
 }
 
-.customRadioInput {
+.custom-radio-input {
   display: none;
 }
 
-.customRadioInput:checked + .customRadioWrapper .customRadio {
+.custom-radio-input:checked + .custom-radio-wrapper .custom-radio {
   background-color: #2c2c2c;
   color: white;
   box-shadow:
@@ -196,16 +196,16 @@
   transition-duration: 600ms;
 }
 
-.customRadioInput:not(:checked) + .customRadioWrapper .customRadio {
+.custom-radio-input:not(:checked) + .custom-radio-wrapper .custom-radio {
   background-position: 100% 0;
   transition: none;
 }
 
-.customRadioInput:checked + .customRadioWrapper .customRadio .inner {
+.custom-radio-input:checked + .custom-radio-wrapper .custom-radio .inner {
   transform: translateY(-1px);
 }
 
-.customRadioInput:checked + .customRadioWrapper .customRadio:hover {
+.custom-radio-input:checked + .custom-radio-wrapper .custom-radio:hover {
   background-color: #3f3f3f;
   box-shadow:
     rgba(0, 0, 0, 0.26) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(
@@ -216,18 +216,18 @@
     ) 0px 3px 6px 2px, rgba(255, 255, 255, 0.17) 0px 3px 1px 0px inset;
 }
 
-.customRadioWrapper .customRadio:hover .inner {
+.custom-radio-wrapper .custom-radio:hover .inner {
   transform: translateY(1px);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .signinForm-container {
+  .signin-page {
     min-height: calc(100vh - 56px);
   }
 }
 
 @media (min-width: 1024px) {
-  .signinForm-container {
+  .signin-page {
     min-height: calc(100vh - 56px);
   }
 }
