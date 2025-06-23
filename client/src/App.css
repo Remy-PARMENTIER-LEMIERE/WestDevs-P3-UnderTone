@@ -19,7 +19,6 @@
 
 body {
   margin: 0;
-  overflow: hidden;
   color: var(--text-color);
 }
 

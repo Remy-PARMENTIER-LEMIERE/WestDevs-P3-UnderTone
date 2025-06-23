@@ -1,4 +1,8 @@
 footer {
+  width: 100vw;
+  overflow: hidden;
+}
+footer section {
   font-family: var(--text-font);
   background-color: var(--primary-color);
   display: flex;
@@ -47,7 +51,7 @@ footer {
 }
 
 @media (min-width: 768px) {
-  footer {
+  footer section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
