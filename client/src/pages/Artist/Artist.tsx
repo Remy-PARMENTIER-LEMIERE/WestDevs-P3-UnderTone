@@ -6,35 +6,39 @@ import "./Artist.css";
 import { useParams } from "react-router";
 
 function Artist() {
-  const params = useParams();
-  const [artist, setArtist] = useState();
+  const { id } = useParams();
+  const [artist, setArtist] = useState<null | Artist>();
 
   useEffect(() => {
-    fetch(`http://localhost:3310/api/artist/${params}`)
+    fetch(`http://localhost:3310/api/artist/${id}`)
       .then((response) => response.json())
       .then((data) => setArtist(data));
-  }, [params]);
+  }, [id]);
   return (
     <main className="artist-page">
-      <h1>{artist}</h1>
-      <figure>
-        <input
-          type="checkbox"
-          name="favorite"
-          id="favorite"
-          aria-label="Ajouter aux favoris"
-        />
-        <img src="" alt="" />
-        <button type="button">
-          <img src="" alt="" />
-          <img src="" alt="" />
-        </button>
-      </figure>
-      <MusicStyles />
-      <p>{}</p>
-      <SocialNetworks />
-      <a href="/">{}</a>
-      <Carousel />
+      {artist && (
+        <>
+          <h1>{artist.name}</h1>
+          <figure>
+            <input
+              type="checkbox"
+              name="favorite"
+              id="favorite"
+              aria-label="Ajouter aux favoris"
+              // checked
+            />
+            <img src={artist.profile_picture} alt={artist.name} />
+            <button type="button" className="play-pause" />
+          </figure>
+          {id && <MusicStyles params={id} />}
+          <p>{artist.description}</p>
+          <SocialNetworks artist={artist} />
+          <a href={artist.web_site} target="_blank" rel="noreferrer">
+            {artist.name}.com
+          </a>
+          <Carousel />
+        </>
+      )}
     </main>
   );
 }
