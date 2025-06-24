@@ -68,14 +68,14 @@ header nav ul li:last-child img {
 
   header nav ul {
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: fixed;
-    width: 100vw;
-    left: 0;
+    width: 50vh;
+    /*left: 0;*/
     visibility: hidden;
     top: 59px;
-    height: calc(100vh - 59px - 86px);
+    height: 45%; /*calc(100vh - 59px - 86px);*/
     padding: 2rem;
     background-color: var(--primary-color);
     z-index: 9;

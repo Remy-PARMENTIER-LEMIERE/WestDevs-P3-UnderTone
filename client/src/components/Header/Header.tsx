@@ -20,18 +20,22 @@ function Header() {
         <div className="nav-wrapper">
           <ul>
             <li>
-              <Link to="/app">
+              <Link to="/app" onClick={handleSowLinks}>
                 EVENEMENT
                 <span />
               </Link>
             </li>
 
             <li>
-              <Link to="/app">RECHERCHE</Link>
+              <Link to="/app" onClick={handleSowLinks}>
+                RECHERCHE
+              </Link>
             </li>
 
             <li>
-              <Link to="/app">CONTACT</Link>
+              <Link to="/app" onClick={handleSowLinks}>
+                CONTACT
+              </Link>
             </li>
           </ul>
           <Link to=" ">
