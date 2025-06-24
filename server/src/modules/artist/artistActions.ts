@@ -8,7 +8,7 @@ const read: RequestHandler = async (req, res, next) => {
     let artist = await artistRepository.read(artistId);
 
     if (artist == null) {
-      res.sendStatus(404).json("L'artiste n'existe pas sur la plateforme.");
+      res.status(404).json("L'artiste n'existe pas sur la plateforme.");
     } else {
       const artistPhoto = await artistPhotoRepository.readAll(artistId);
 

@@ -1,5 +1,5 @@
+import type { Rows } from "../../../database/client";
 import databaseClient from "../../../database/client";
-import type { Result, Rows } from "../../../database/client";
 import type { Photo } from "../artistPhoto/artistPhotoRepository";
 
 type Artist = {
