@@ -4,6 +4,8 @@ const router = express.Router();
 
 /* ************************************************************************* */
 // Define Your API Routes Here
+import signInActions from "./modules/signIn/signInActions";
+router.post("/api/register", signInActions.add);
 /* ************************************************************************* */
 
 // Define item-related routes
@@ -13,6 +15,8 @@ router.get("/api/items", itemActions.browse);
 router.get("/api/items/:id", itemActions.read);
 router.post("/api/items", itemActions.add);
 
+import artistActions from "./modules/artist/artistActions";
+router.get("/api/artist/:id", artistActions.read);
 /* ************************************************************************* */
 
 export default router;
