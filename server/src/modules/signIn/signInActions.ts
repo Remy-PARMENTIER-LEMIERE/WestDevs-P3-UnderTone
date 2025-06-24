@@ -3,7 +3,7 @@ import signInRepository from "./signInRepository";
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const { name, email, password, confirmPassword } = req.body;
+    const { username, email, password, confirmPassword, identifier } = req.body;
 
     if (password !== confirmPassword) {
       res
@@ -12,7 +12,7 @@ const add: RequestHandler = async (req, res, next) => {
       return;
     }
 
-    const newUser = { name, email, password };
+    const newUser = { username, email, password, identifier };
 
     const insertNewUser = await signInRepository.create(newUser);
 
