@@ -1,12 +1,5 @@
 import databaseClient from "../../../database/client";
-
-import type { Result, Rows } from "../../../database/client";
-
-export type Photo = {
-  id: number;
-  imgSrc: string;
-  date: string;
-};
+import type { Rows } from "../../../database/client";
 
 class ArtistPhotoRepository {
   async readAll(artist_id: number) {
@@ -15,7 +8,6 @@ class ArtistPhotoRepository {
       [artist_id],
     );
 
-    // Return the array of items
     return rows as Photo[];
   }
 }
