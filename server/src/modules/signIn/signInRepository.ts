@@ -11,10 +11,10 @@ type SignIn = {
 };
 
 class SignInRepository {
-  async create(data: Omit<SignIn, "confirmPassword">) {
+  async create(body: Omit<SignIn, "confirmPassword">) {
     const [result] = await databaseClient.query<Result>(
-      "insert into user (username, email, password, identifier) values (?, ?, ?, ?)",
-      [data.username, data.email, data.password, data.identifier],
+      "INSERT INTO user (username, email, password, identifier) VALUES (?, ?, ?, ?)",
+      [body.username, body.email, body.password, body.identifier],
     );
 
     return result.affectedRows;

@@ -104,6 +104,7 @@ function SignInForm() {
             <input
               type="text"
               name="name"
+              id="name"
               value={formData.name}
               onChange={handleChange}
               required
@@ -114,17 +115,19 @@ function SignInForm() {
           <div className="input-group">
             <input
               type="email"
+              id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
               autoComplete="on"
             />
-            <label htmlFor="Email">Email</label>
+            <label htmlFor="email">Email</label>
           </div>
           <div className="input-group">
             <input
               type="password"
+              id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
@@ -136,7 +139,8 @@ function SignInForm() {
           <div className="input-group">
             <input
               type="password"
-              name="confirmPassword"
+              id="verified-password"
+              name="verifiedPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
               required
