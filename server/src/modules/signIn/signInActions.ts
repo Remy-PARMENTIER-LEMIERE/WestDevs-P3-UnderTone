@@ -5,7 +5,7 @@ const add: RequestHandler = async (req, res, next) => {
   try {
     const { username, email, password, confirmPassword, identifier } = req.body;
 
-    if (password !== confirmPassword) {
+    if (req.body.password !== req.body.confirmPassword) {
       res
         .status(400)
         .json({ error: "Les mots de passe ne correspondent pas." });

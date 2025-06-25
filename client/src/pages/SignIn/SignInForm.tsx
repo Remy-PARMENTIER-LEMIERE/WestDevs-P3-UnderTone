@@ -1,56 +1,7 @@
-import { useState } from "react";
-import type { ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router";
 import "./SignInForm.css";
 
 function SignInForm() {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    role: "",
-    identifier: "",
-  });
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type } = e.target;
-    if (type === "radio") {
-      setFormData({ ...formData, role: value });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (formData.password !== formData.confirmPassword) {
-      alert("Les mots de passe ne correspondent pas.");
-      return;
-    }
-
-    try {
-      const response = await fetch("http://localhost:3310/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        alert("Inscription réussie !");
-      } else {
-        alert(result.message || "Erreur lors de l'inscription.");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Une erreur est survenue.");
-    }
-  };
-
   return (
     <main className="signin-page">
       <section className="form-container">
@@ -63,7 +14,6 @@ function SignInForm() {
             type="radio"
             name="role"
             value="artist"
-            onChange={handleChange}
           />
           <label className="custom-radio-wrapper" htmlFor="artist">
             <div className="custom-radio">
@@ -77,7 +27,6 @@ function SignInForm() {
             type="radio"
             name="role"
             value="user"
-            onChange={handleChange}
           />
           <label className="custom-radio-wrapper" htmlFor="user">
             <div className="custom-radio">
@@ -91,7 +40,6 @@ function SignInForm() {
             type="radio"
             name="role"
             value="place"
-            onChange={handleChange}
           />
           <label className="custom-radio-wrapper" htmlFor="place">
             <div className="custom-radio">
@@ -100,14 +48,16 @@ function SignInForm() {
           </label>
         </div>
 
-        <form className="signin-form" onSubmit={handleSubmit}>
+        <form
+          className="signin-form"
+          action="http://localhost:3310/api/register"
+          method="POST"
+        >
           <div className="input-group">
             <input
               type="text"
               name="username"
               id="username"
-              value={formData.username}
-              onChange={handleChange}
               required
               autoComplete="off"
             />
@@ -118,8 +68,6 @@ function SignInForm() {
               type="text"
               id="identifier"
               name="identifier"
-              value={formData.identifier}
-              onChange={handleChange}
               required
               autoComplete="off"
             />
@@ -130,8 +78,6 @@ function SignInForm() {
               type="email"
               id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
               required
               autoComplete="on"
             />
@@ -142,8 +88,6 @@ function SignInForm() {
               type="password"
               id="password"
               name="password"
-              value={formData.password}
-              onChange={handleChange}
               required
               autoComplete="off"
             />
@@ -154,8 +98,6 @@ function SignInForm() {
               type="password"
               id="verified-password"
               name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
               required
               autoComplete="off"
             />
