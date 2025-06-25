@@ -5,11 +5,12 @@ import "./SignInForm.css";
 
 function SignInForm() {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
     role: "",
+    identifier: "",
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +31,7 @@ function SignInForm() {
     }
 
     try {
-      const response = await fetch("http://localhost:3001/api/register", {
+      const response = await fetch("http://localhost:3310/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,14 +104,26 @@ function SignInForm() {
           <div className="input-group">
             <input
               type="text"
-              name="name"
-              id="name"
-              value={formData.name}
+              name="username"
+              id="username"
+              value={formData.username}
               onChange={handleChange}
               required
               autoComplete="off"
             />
-            <label htmlFor="name">Name</label>
+            <label htmlFor="username">Name</label>
+          </div>
+          <div className="input-group">
+            <input
+              type="text"
+              id="identifier"
+              name="identifier"
+              value={formData.identifier}
+              onChange={handleChange}
+              required
+              autoComplete="off"
+            />
+            <label htmlFor="identifier">Identifiant</label>
           </div>
           <div className="input-group">
             <input
@@ -140,7 +153,7 @@ function SignInForm() {
             <input
               type="password"
               id="verified-password"
-              name="verifiedPassword"
+              name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
               required
