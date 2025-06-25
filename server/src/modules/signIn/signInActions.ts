@@ -16,7 +16,7 @@ const add: RequestHandler = async (req, res, next) => {
 
     const insertNewUser = await signInRepository.create(newUser);
 
-    res.status(201).json({ insertNewUser });
+    res.status(201).json("Votre compte a bien été créé");
   } catch (err) {
     next(err);
   }
