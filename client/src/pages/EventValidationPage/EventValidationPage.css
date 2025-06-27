@@ -5,28 +5,38 @@
   /* height: 100vh; */
   display: flex;
   flex-direction: column;
+  font-family: var("sen") sans-serif;
+  img {
+    width: 250px;
+    margin: auto;
+  }
   div {
     display: flex;
     flex-direction: column;
     margin: auto;
   }
-  section {
+
+  .event_text {
     text-align: center;
-    font-family: url("/src/assets/fonts/Sen-VariableFont_wght.ttf") sans-serif;
-    margin-top: 30px;
+    font-family: var("sen") sans-serif;
+    /* margin-top: 30px; */
   }
 }
-.event_validation section :first-child {
-  /* display: block; */
+/*.event_validation div img {
+  width: 250px;
+}
+
+/*.event_validation section :first-child {
+   display: block; 
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   margin: 0;
-  p {
-    margin: 0;
-  }
+  /* p { */
+/* margin: 0; */
+/* } 
 }
 
 /*.event_validation section :nth-child(2) {
@@ -74,11 +84,12 @@
     }
     img {
       width: 50%;
-      height: 80%;
+      height: 100%;
     }
   }
   .event_text {
     width: 50%;
+    font-size: 1.2;
   }
   .event_validation div {
     display: flex;
@@ -94,7 +105,12 @@
     width: 60vw;
     height: 60vh;
   }
-  .event_validation div section :first-child {
+  .event_validation div .event_text :first-child {
     display: block;
+    gap: 5px;
+    line-height: 1.5;
+  }
+  .validate_event button {
+    font-size: 1.2rem;
   }
 }
