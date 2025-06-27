@@ -111,6 +111,7 @@ function SignInForm() {
           </div>
           <div className="input-group">
             <input
+              title="8-16 caractères avec au moins une majuscule, une minuscule, un chiffre et un caractère spécial"
               type="password"
               id="password"
               name="password"
