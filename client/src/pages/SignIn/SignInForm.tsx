@@ -131,7 +131,7 @@ function SignInForm() {
               autoComplete="off"
               onChange={handleConfirmPassword}
               value={confirmPassword}
-              pattern="/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[?%*.#@&~$!+=:;/]).{8,})\S$/"
+              pattern="/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[?%*.#@&~$!+=:;/]).{8,16})\S$/"
             />
             <label htmlFor="verified-password">Vérifier mot de passe</label>
           </div>
