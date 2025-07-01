@@ -17,18 +17,18 @@ class UserRepository {
     return rows[0] || null;
   }
 
-  async findByIdentifiant(identifiant: string) {
+  async findByIdentifiant(identifier: string) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT * FROM user WHERE identifiant = ?",
-      [identifiant],
+      "SELECT * FROM user WHERE identifier = ?",
+      [identifier],
     );
-    return rows[0] || null;
+    return rows[0];
   }
 
   async create(user: User) {
     const [result] = await databaseClient.query<Result>(
-      "INSERT INTO user (identifiant, password) VALUES (?, ?)",
-      [user.identifiant, user.password],
+      "INSERT INTO user (identifier, password) VALUES (?, ?)",
+      [user.identifier, user.password],
     );
     return result.affectedRows;
   }

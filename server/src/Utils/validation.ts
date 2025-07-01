@@ -1,16 +1,14 @@
 import type { RequestHandler } from "express";
 
-class UserValidation {
-  userValidation: RequestHandler = (req, res, next) => {
-    const { identifiant, password } = req.body;
+const userValidation: RequestHandler = (req, res, next) => {
+  const { identifier, password } = req.body;
 
-    if (!identifiant || !password) {
-      res.status(400).json({ message: "Missing identifiant or password" });
-      return;
-    }
+  if (!identifier || !password) {
+    res.status(400).json({ message: "Missing identifiant or password" });
+    return;
+  }
 
-    next();
-  };
-}
+  next();
+};
 
-export default new UserValidation();
+export default { userValidation };
