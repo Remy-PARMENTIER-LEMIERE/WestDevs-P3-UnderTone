@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 function Event() {
   const { id } = useParams();
-  const [event, setEvent] = useState<null | Artist>();
+  const [event, setEvent] = useState<null | EventData>();
 
   useEffect(() => {
     fetch(`http://localhost:3310/api/event/${id}`)
@@ -13,12 +13,16 @@ function Event() {
   }, [id]);
   return (
     <main>
-      <h1>Nom de la soirée</h1>
-      <img src="" alt="affiche de la soirée" />
-      <p>date</p>
-      <p>artiste invité</p>
-      <p>adresse</p>
-      <p>description</p>
+      {event && (
+        <>
+          <h1>{event.name}</h1>
+          <img src="" alt="affiche de la soirée" />
+          <p>date</p>
+          <p>artiste invité</p>
+          <p>adresse</p>
+          <p>description</p>
+        </>
+      )}
     </main>
   );
 }

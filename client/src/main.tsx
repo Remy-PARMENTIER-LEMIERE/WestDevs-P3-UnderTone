@@ -11,6 +11,7 @@ import Artist from "./pages/Artist/Artist";
 import Login from "./pages/Login/Login";
 import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
+import Event from "./pages/Event/Event";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "artist/:id",
         element: <Artist />,
+      },
+      {
+        path: "event/:id",
+        element: <Event />,
       },
     ],
   },
