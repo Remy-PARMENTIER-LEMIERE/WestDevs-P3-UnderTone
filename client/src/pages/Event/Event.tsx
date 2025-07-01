@@ -11,6 +11,7 @@ function Event() {
       .then((response) => response.json())
       .then((data) => setEvent(data));
   }, [id]);
+
   return (
     <main>
       {event && (
