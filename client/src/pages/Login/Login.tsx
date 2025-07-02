@@ -31,13 +31,7 @@ function Login() {
     <main className="login-page">
       <section>
         <h1>Connexion</h1>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const formData = new FormData(e.currentTarget);
-            handleSubmit(formData);
-          }}
-        >
+        <form action={handleSubmit}>
           <div className="input-group">
             <input
               type="email"
