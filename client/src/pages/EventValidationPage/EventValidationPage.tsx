@@ -3,19 +3,16 @@ import "./EventValidationPage.css";
 function EventValidationPage() {
   return (
     <main className="event-validation">
-      <div>
+      <div className="card">
         <img
-          src="images/Photo event.svg"
+          src="/images/event-photo.png"
           alt="un batteur avec ses instruments"
         />
 
         <section className="event-text">
-          <p className="first-text">
-            <strong>Vent Débarasse</strong>&nbsp;
-            <span>vous invite pour son évènement</span>&nbsp;
-            <span>
-              <strong>Soirée Funk!</strong>
-            </span>
+          <p>
+            <strong>Vent Débarasse</strong> vous invite pour son évènement{" "}
+            <strong>Soirée Funk !</strong>
           </p>
           <p>
             <strong>21 juin 2025</strong>
@@ -24,10 +21,10 @@ function EventValidationPage() {
             <strong>20h</strong>
           </p>
           <p>Serez-vous présent?</p>
-          <article className="validate-event">
+          <div className="buttons-container">
             <button type="button">Refuser</button>
             <button type="button">Accepter</button>
-          </article>
+          </div>
         </section>
       </div>
     </main>
