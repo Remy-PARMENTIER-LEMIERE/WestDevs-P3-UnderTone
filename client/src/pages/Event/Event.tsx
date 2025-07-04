@@ -2,31 +2,6 @@ import { useParams } from "react-router";
 import "./Event.css";
 import { useEffect, useState } from "react";
 
-// Types TypeScript
-interface MusicStyle {
-  id: number;
-  name: string;
-}
-
-interface InvitedArtist {
-  id: number;
-  name: string;
-  musicStyles: MusicStyle[];
-  profilePicture: string;
-}
-
-interface EventData {
-  id: number;
-  name: string;
-  date_hour: string;
-  description: string;
-  image: string;
-  invitedArtists: InvitedArtist[];
-  concertPlaceName: string;
-  address: string;
-  menu: string;
-}
-
 function Event() {
   const { id } = useParams();
   const [event, setEvent] = useState<null | EventData>(null);
