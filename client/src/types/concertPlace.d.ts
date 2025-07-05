@@ -21,6 +21,7 @@ type DayOpeningHours = {
 };
 
 type ConcertPlace = {
+  address: string;
   DayOpeningHours: DayOpeningHours[];
   user_id: number;
   name: string;

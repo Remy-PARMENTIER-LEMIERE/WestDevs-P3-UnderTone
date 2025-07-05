@@ -4,10 +4,10 @@ import { useParams } from "react-router";
 import Carousel from "../../components/Carousel/Carousel";
 import Maps from "../../components/Map/Maps";
 import Menu from "../../components/Menu/Menu";
+import OpeningHours from "../../components/OpeningHours/OpeningHours";
 import ProfilePicturePlayFavorite from "../../components/ProfilePicturePlayFavorite/ProfilePicturePlayFavorite";
 import SocialNetworks from "../../components/SocialNetworks/SocialNetworks";
 import StylesTypes from "../../components/StylesTypes/StylesTypes";
-import OpeningHours from "../../components/OpeningHours/OpeningHours";
 
 function ConcertPlace() {
   const params = useParams();
@@ -62,6 +62,13 @@ function ConcertPlace() {
 
           {concertPlace.openingHours && (
             <OpeningHours hours={concertPlace.DayOpeningHours} />
+          )}
+
+          {concertPlace.address && (
+            <section>
+              <h2>Adresse</h2>
+              <p>{concertPlace.address}</p>
+            </section>
           )}
 
           <Maps />
