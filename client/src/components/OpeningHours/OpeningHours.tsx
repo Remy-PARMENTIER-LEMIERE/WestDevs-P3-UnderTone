@@ -1,15 +1,5 @@
 import "./OpeningHours.css";
 
-type OpeningHoursProps = {
-  hours: {
-    weekDay: string;
-    openingHourNoon: string | null;
-    closingHourNoon: string | null;
-    openingHourEvening: string | null;
-    closingHourEvening: string | null;
-  }[];
-};
-
 function formatHour(time: string | null): string | null {
   if (!time) return null;
   const cleaned = time.split(":").slice(0, 2).join(":");

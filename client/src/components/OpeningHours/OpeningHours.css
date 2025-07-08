@@ -1,7 +1,7 @@
 .opening-hours {
   margin: 1.5rem 1rem;
   font-family: Arial, sans-serif;
-  color: #222;
+  color: var(--text-color);
 }
 
 .opening-hours h2 {

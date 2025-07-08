@@ -24,5 +24,16 @@ type ConcertPlace = {
   menu: string | null;
   concertPlacePhotos: Photo[];
   types: Types[];
+  address: string | null;
   openingHours: SingleDayOpeningHours[];
+};
+
+type OpeningHoursProps = {
+  hours: {
+    weekDay: string;
+    openingHourNoon: string | null;
+    closingHourNoon: string | null;
+    openingHourEvening: string | null;
+    closingHourEvening: string | null;
+  }[];
 };
