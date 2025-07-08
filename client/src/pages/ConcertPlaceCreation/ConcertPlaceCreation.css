@@ -1,0 +1,11 @@
+.concert-place-creation {
+  background-color: var(--primary-color);
+
+  /* section {
+
+  } */
+
+  .input-group {
+    width: 265px;
+  }
+}
