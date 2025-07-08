@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Research.css";
 import EventForm from "../../components/EventForm/EventForm";
+import ArtistForm from "../../components/ArtistForm/ArtistForm";
 
 function Research() {
   const [selectedRole, setSelectedRole] = useState("");
@@ -52,6 +53,7 @@ function Research() {
       </form>
 
       {selectedRole === "Évènement" && <EventForm />}
+      {selectedRole === "Artiste" && <ArtistForm />}
     </main>
   );
 }
