@@ -1,13 +1,16 @@
 import { Link } from "react-router";
 import "./UserMenu.css";
 import { useAuth } from "../../../services/AuthContext";
+import type { UserMenuProps } from "../../../types/userMenu";
 
 function UserMenu({ showPopover, setShowPopover }: UserMenuProps) {
-  const { isLogged, setIsLogged } = useAuth();
+  const { isLogged, setIsLogged, user } = useAuth();
+
   const handleLogout = () => {
     setIsLogged(false);
     setShowPopover(false);
   };
+
   return (
     <>
       {showPopover && (
@@ -21,13 +24,17 @@ function UserMenu({ showPopover, setShowPopover }: UserMenuProps) {
               >
                 Mon compte
               </Link>
-              <Link
-                to="/app/artist-profile"
-                onClick={() => setShowPopover(false)}
-                className="popover-link"
-              >
-                Mon profil artiste
-              </Link>
+
+              {user?.status === "artist" && (
+                <Link
+                  to="/app/artist-profile"
+                  onClick={() => setShowPopover(false)}
+                  className="popover-link"
+                >
+                  Mon profil artiste
+                </Link>
+              )}
+
               <button
                 type="button"
                 onClick={handleLogout}

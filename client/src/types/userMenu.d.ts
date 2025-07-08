@@ -1,4 +1,4 @@
-type UserMenuProps = {
+export interface UserMenuProps {
   showPopover: boolean;
-  setShowPopover: (boolean) => void;
-};
+  setShowPopover: (value: boolean) => void;
+}
