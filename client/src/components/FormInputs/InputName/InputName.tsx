@@ -11,6 +11,7 @@ function InputName({ label }: { label: string }) {
           required
           autoComplete="on"
           placeholder=""
+          maxLength={150}
         />
         <label htmlFor="name">{label}</label>
       </div>

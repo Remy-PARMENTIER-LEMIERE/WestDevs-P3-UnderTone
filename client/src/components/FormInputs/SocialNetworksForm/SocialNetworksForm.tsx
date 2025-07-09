@@ -18,7 +18,7 @@ const socialNetworks = [
 function SocialNetworksForm() {
   return (
     <>
-      <form className="social-networks">
+      <section className="social-networks">
         <select name="" id="" required>
           <option value="">-- Choisissez un réseau --</option>
           {socialNetworks.map((sn) => (
@@ -27,9 +27,15 @@ function SocialNetworksForm() {
             </option>
           ))}
         </select>
-        <input type="url" name="link" id="social-network-link" required />
-        <button type="submit">Valider</button>
-      </form>
+        <input
+          type="url"
+          name="link"
+          id="social-network-link"
+          required
+          maxLength={200}
+        />
+        <button type="button">Valider</button>
+      </section>
     </>
   );
 }

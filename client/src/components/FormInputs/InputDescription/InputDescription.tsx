@@ -3,7 +3,7 @@ import "./InputDescription.css";
 function InputDescription() {
   return (
     <div className="input-group">
-      <textarea name="description" id="description" />
+      <textarea name="description" id="description" maxLength={1500} />
       <label htmlFor="description">Description</label>
     </div>
   );
