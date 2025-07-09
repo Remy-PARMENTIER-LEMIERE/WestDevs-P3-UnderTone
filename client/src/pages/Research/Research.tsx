@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Research.css";
-import EventForm from "../../components/EventForm/EventForm";
+import EventForm from "../../components/EventForm/EventSearchForm";
 import ArtistForm from "../../components/ArtistForm/ArtistForm";
 
 function Research() {
