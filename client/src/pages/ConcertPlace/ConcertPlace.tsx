@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./ConcertPlace.css";
 import { useParams } from "react-router";
+import Address from "../../components/Address/Address";
 import Carousel from "../../components/Carousel/Carousel";
 import Maps from "../../components/Map/Maps";
 import Menu from "../../components/Menu/Menu";
@@ -8,7 +8,7 @@ import OpeningHours from "../../components/OpeningHours/OpeningHours";
 import ProfilePicturePlayFavorite from "../../components/ProfilePicturePlayFavorite/ProfilePicturePlayFavorite";
 import SocialNetworks from "../../components/SocialNetworks/SocialNetworks";
 import StylesTypes from "../../components/StylesTypes/StylesTypes";
-import Address from "../../components/Address/Address";
+import "./ConcertPlace.css";
 
 function ConcertPlace() {
   const params = useParams();
