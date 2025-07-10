@@ -1,11 +1,6 @@
-import { useState } from "react";
 import "./EventSearchForm.css";
 
 function EventSearchForm() {
-  const [radius, setRadius] = useState("1");
-  const handleRadius = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRadius(e.target.value);
-  };
   const handleSubmit = (formData: FormData) => {
     const data = JSON.stringify(Object.fromEntries(formData));
     fetch("http://localhost:3310/api/event/search", {
@@ -20,36 +15,15 @@ function EventSearchForm() {
   return (
     <form action={handleSubmit}>
       <div className="input-group">
-        <input type="text" name="town" id="town" required autoComplete="off" />
-        <label htmlFor="town">Ville</label>
-      </div>
-
-      <div className="input-group">
-        <input
-          type="range"
-          name="rayon"
-          id="rayon"
-          required
-          autoComplete="off"
-          placeholder="Rayon"
-          min={1}
-          max={50}
-          onChange={handleRadius}
-          value={radius}
-        />
-        <label htmlFor="rayon">Rayon: {radius} km</label>
-      </div>
-
-      <div className="input-group">
         <input
           type="date"
           name="date"
           id="date"
           required
           autoComplete="on"
-          placeholder="Date"
+          placeholder="date"
         />
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date">date</label>
       </div>
 
       <button type="submit">Rechercher</button>

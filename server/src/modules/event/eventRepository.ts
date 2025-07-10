@@ -10,20 +10,6 @@ class EventRepository {
 
     return rows[0] as Event;
   }
-
-  async searchEvent(town: string, date: string) {
-    const [rows] = await databaseClient.query(
-      `SELECT e.id, e.name, e.date_hour, e.description, e.image,
-              cp.name AS concertPlaceName, cp.address
-       FROM event AS e
-       JOIN concert_place AS cp ON e.concert_place_id = cp.user_id
-         WHERE DATE(e.date_hour) = ?
-       LIMIT 50`,
-      [town, date],
-    );
-
-    return rows;
-  }
 }
 
 export default new EventRepository();

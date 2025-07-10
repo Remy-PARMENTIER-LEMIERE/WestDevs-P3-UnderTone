@@ -17,23 +17,4 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
-const searchEvent: RequestHandler = async (req, res, next) => {
-  try {
-    const { town, date } = req.query;
-
-    if (!town || !date) {
-      res.status(400).json("Les champs 'ville' et 'date' sont requis.");
-      return;
-    }
-
-    const result = await eventRepository.searchEvent(
-      town as string,
-      date as string,
-    );
-    res.json(result);
-  } catch (err) {
-    next(err);
-  }
-};
-
-export default { read, searchEvent };
+export default { read };
