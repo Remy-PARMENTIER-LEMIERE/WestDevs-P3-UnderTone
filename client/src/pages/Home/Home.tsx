@@ -39,12 +39,12 @@ function Home() {
             <br />
             votre univers musical <strong>au grand public</strong> !
             <span>
-              {" "}
-              En jouant dans des établissements de votre région,
+              <br /> En jouant dans des établissements de votre région,
               <br />
               vous touchez de <strong>nouveaux publics</strong> à chaque
               prestation.
             </span>
+            <br />
             <span>
               Ici, <strong>les artistes</strong> sont visibles, écoutés, et
               valorisés !
@@ -66,6 +66,7 @@ function Home() {
               <br />
               et faites vivre la scène musicale de votre région.
             </span>
+            <br />
             <span>
               {" "}
               Ici, <strong>votre établissement</strong> devient un
@@ -83,16 +84,12 @@ function Home() {
   return (
     <main className="status-user">
       <div className="home-content">
-        <img
-          src="/images/home_image.svg"
-          alt="Accueil"
-          className="home-image"
-        />
+        <img src="/images/home_image.svg" alt="Table de mixage de musique" />
 
         <form>
-          <p>
-            <strong>Je suis un</strong>
-          </p>
+          <h2>
+            <strong>Je suis un:</strong>
+          </h2>
           <div className="radio-options">
             <input
               type="radio"
@@ -132,15 +129,22 @@ function Home() {
           </div>
         </form>
         {choicestatus && <div className="message-zone">{getMessage()}</div>}
-      </div>
-      <div className="home-buttons">
-        <div>
-          <button type="button">Inscription</button>
-          <button type="button">Connexion</button>
-        </div>
-        <div>
-          <button type="button">Accéder à l'application</button>
-        </div>
+
+        <section className="home-buttons">
+          <div>
+            <button type="button">
+              <strong>Inscription</strong>
+            </button>
+            <button type="button">
+              <strong>Connexion</strong>
+            </button>
+          </div>
+          <div>
+            <button type="button">
+              <strong>Accéder à l'application</strong>
+            </button>
+          </div>
+        </section>
       </div>
     </main>
   );
