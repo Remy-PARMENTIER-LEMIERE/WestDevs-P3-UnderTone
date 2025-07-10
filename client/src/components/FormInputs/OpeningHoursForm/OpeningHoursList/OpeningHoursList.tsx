@@ -12,9 +12,9 @@ function OpeningHoursList({
   >;
 }) {
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const idToDelete = (e.currentTarget as HTMLButtonElement).dataset.id;
+    const weekDayToDelete = (e.currentTarget as HTMLButtonElement).dataset.id;
     setOpeningHours(
-      openingHours.filter((day) => String(day.id) !== idToDelete),
+      openingHours.filter((day) => day.weekDay !== weekDayToDelete),
     );
   };
 
@@ -29,7 +29,7 @@ function OpeningHoursList({
               ? ` / ${sdoh.openingHourEvening}-${sdoh.closingHourEvening}`
               : ""}
           </p>
-          <button type="button" onClick={handleDelete} data-id={sdoh.id}>
+          <button type="button" onClick={handleDelete} data-id={sdoh.weekDay}>
             X
           </button>
         </li>
