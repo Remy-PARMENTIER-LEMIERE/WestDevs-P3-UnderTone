@@ -21,7 +21,7 @@ function OpeningHoursList({
   return (
     <ul className={`validated-opening-hours-list${showList ? " visible" : ""}`}>
       {list.map((sdoh) => (
-        <li key={sdoh.id}>
+        <li key={sdoh.weekDay}>
           <p>{sdoh.weekDay}</p>
           <p>
             {sdoh.openingHourNoon}-{sdoh.closingHourNoon}

@@ -41,7 +41,6 @@ const weekDays = [
 ];
 
 function createSingleDayOpeningHours(
-  id: number,
   weekDay: string,
   openingHourNoonRef: React.RefObject<HTMLInputElement>,
   closingHourNoonRef: React.RefObject<HTMLInputElement>,
@@ -49,7 +48,6 @@ function createSingleDayOpeningHours(
   closingHourEveningRef: React.RefObject<HTMLInputElement>,
 ): SingleDayOpeningHours {
   return {
-    id,
     weekDay,
     openingHourNoon: openingHourNoonRef.current?.value || "",
     closingHourNoon: closingHourNoonRef.current?.value || "",
@@ -58,7 +56,15 @@ function createSingleDayOpeningHours(
   };
 }
 
-function OpeningHoursForm() {
+function OpeningHoursForm({
+  openingHours,
+  setOpeningHours,
+}: {
+  openingHours: SingleDayOpeningHours[];
+  setOpeningHours: React.Dispatch<
+    React.SetStateAction<SingleDayOpeningHours[]>
+  >;
+}) {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,9 +90,6 @@ function OpeningHoursForm() {
     null,
   ) as React.RefObject<HTMLInputElement>;
 
-  const [openingHours, setOpeningHours] = useState<SingleDayOpeningHours[]>([]);
-  let openingDayId = 0;
-
   const handleOpeningHoursValidation = () => {
     const newDays = [] as SingleDayOpeningHours[];
     if (
@@ -108,10 +111,8 @@ function OpeningHoursForm() {
       return;
     }
     selectedOptions.map((day) => {
-      openingDayId++;
       newDays.push(
         createSingleDayOpeningHours(
-          openingDayId,
           day,
           openingHourNoonRef,
           closingHourNoonRef,
