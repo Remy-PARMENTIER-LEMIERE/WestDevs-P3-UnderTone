@@ -1,81 +1,63 @@
-// import { useState } from "react";
-// import "./ArtistProfile.css";
-// import DemoUploader from "./DemoUploader/DemoUploader";
-// import MusicalInfluences from "./MusicalInfluences/MusicalInfluences";
-// import { ArtistProfileData } from "./types/ArtistProfile.types";
+import { useState } from "react";
+import "./ArtistProfile.css";
+import InputDescription from "../../components/FormInputs/InputDescription/InputDescription";
+import InputName from "../../components/FormInputs/InputName/InputName";
+import InputPhotos from "../../components/FormInputs/InputPhotos/InputPhotos";
+import InputProfilePicture from "../../components/FormInputs/InputProfilePicture/InputProfilePicture";
+import InputWebsite from "../../components/FormInputs/InputWebsite/InputWebsite";
+import SocialNetworksForm, {
+  type SocialNetwork,
+} from "../../components/FormInputs/SocialNetworksForm/SocialNetworksForm";
+import InputDemo from "./DemoUploader/InputDemo";
+import MusicalInfluencesForm from "./MusicalInfluencesForm/MusicalInfluencesForm";
 
-// function ArtistProfile() {
-//   const [formData, setFormData] = useState<ArtistProfileData>({
-//     name: "",
-//     description: "",
-//     website: "",
-//     musicalInfluences: [],
-//     demo: null,
-//   });
+function ArtistProfile() {
+  const [selectedStyles, setSelectedStyles] = useState<StyleArtistCreation[]>(
+    [],
+  );
+  const [socialNetworks, setSocialNetworks] = useState<SocialNetwork[]>([]);
 
-//   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-//   const handleSubmit = (e: React.FormEvent) => {
-//     e.preventDefault();
-//     console.log(formData);
-//   };
+    const formData = new FormData(e.currentTarget);
 
-//   return (
-//     <main className="artist-profile-page">
-//       <section className="artist-card">
-//         <h1>Profil Artiste</h1>
-//         <form onSubmit={handleSubmit}>
-//           <div>
-//             <label htmlFor="name">Nom d'artiste</label>
-//             <input
-//               type="text"
-//               id="name"
-//               name="name"
-//               value={formData.name}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
+    formData.append("selectedStyles", JSON.stringify(selectedStyles));
+    formData.append("socialNetworks", JSON.stringify(socialNetworks));
 
-//           <div>
-//             <label htmlFor="description">Description</label>
-//             <textarea
-//               id="description"
-//               name="description"
-//               rows={4}
-//               value={formData.description}
-//               onChange={handleChange}
-//             />
-//           </div>
+    fetch("http://localhost:3310/api/new/artist", {
+      method: "POST",
+      body: formData,
+    }).then((res) => console.log("Ma réponse : ", res.ok));
+  };
 
-//           <div>
-//             <label htmlFor="website">Site Web</label>
-//             <input
-//               type="url"
-//               id="website"
-//               name="website"
-//               value={formData.website}
-//               onChange={handleChange}
-//             />
-//           </div>
+  return (
+    <main className="artist-profile-page">
+      <section className="artist-card">
+        <h1>Profil Artiste</h1>
+        <form onSubmit={handleSubmit}>
+          <InputName label={"Nom d'artiste"} />
+          <InputProfilePicture />
 
-//           <MusicalInfluences
-//             influences={formData.musicalInfluences}
-//             onChange={(newInfluences) => setFormData({ ...formData, musicalInfluences: newInfluences })}
-//           />
+          <MusicalInfluencesForm
+            selectedStyles={selectedStyles}
+            setSelectedStyles={setSelectedStyles}
+          />
+          <InputDescription />
+          <SocialNetworksForm
+            socialNetworks={socialNetworks}
+            setSocialNetworks={setSocialNetworks}
+          />
+          <InputWebsite />
 
-//           <DemoUploader
-//             demo={formData.demo}
-//             onUpload={(file) => setFormData({ ...formData, demo: file })}
-//           />
+          <InputDemo />
+          <InputPhotos />
 
-//           <button type="submit">Enregistrer</button>
-//         </form>
-//       </section>
-//     </main>
-//   );
-// }
+          <button type="submit">Valider</button>
+        </form>
+      </section>
+    </main>
+  );
+}
 
-// export default ArtistProfile;
+export default ArtistProfile;

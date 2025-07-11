@@ -1,4 +1,4 @@
-/* .artist-profile-page {
+.artist-profile-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,6 @@
 
 .artist-card {
   width: 845px;
-  height: 1422px;
   background-color: rgba(63, 63, 63, 0.8);
   padding: 2rem;
   border-radius: 20px;
@@ -63,4 +62,4 @@
 
 .artist-card button:hover {
   background-color: #666;
-} */
+}

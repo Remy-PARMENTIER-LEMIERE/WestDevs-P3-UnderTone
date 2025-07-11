@@ -8,7 +8,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 // Import the main app component
 import App from "./App";
 import Artist from "./pages/Artist/Artist";
-// import ArtistProfile from "./pages/ArtistProfile/ArtistProfile";
+import ArtistProfile from "./pages/ArtistProfile/ArtistProfile";
 import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
 import ConcertPlaceCreation from "./pages/ConcertPlaceCreation/ConcertPlaceCreation";
 import Event from "./pages/Event/Event";
@@ -65,10 +65,10 @@ const router = createBrowserRouter([
         path: "event/:id",
         element: <Event />,
       },
-      // {
-      //   path: "artistProfile",
-      //   element: <ArtistProfile />,
-      // },
+      {
+        path: "new/artist",
+        element: <ArtistProfile />,
+      },
     ],
   },
 ]);
