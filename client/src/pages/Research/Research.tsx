@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Research.css";
-import EventSearchForm from "../../components/EventForm/EventSearchForm";
 import ArtistSearchForm from "../../components/ArtistForm/ArtistSearchForm";
+import EventSearchForm from "../../components/EventForm/EventSearchForm";
 
 function Research() {
   const [selectedRole, setSelectedRole] = useState("");
