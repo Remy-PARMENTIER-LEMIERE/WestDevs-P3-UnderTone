@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import "./EventSearchForm.css";
+import "./ConcertPlaceSearchForm.css";
 
-function EventSearchForm() {
+function ConcertPlaceSearchForm() {
   const [formObj, setFormObj] = useState<FormDataType | null>(null);
-  const [filteredEventList, setFilteredEventList] = useState<EventData[]>([]);
+  const [filteredConcertPlaceList, setFilteredConcertPlaceList] = useState<
+    EventData[]
+  >([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
     const formData = new FormData(e.currentTarget);
@@ -23,7 +25,7 @@ function EventSearchForm() {
 
       fetch(`http://localhost:3310/api/search/event?${params.toString()}`)
         .then((res) => res.json())
-        .then((data) => setFilteredEventList(data))
+        .then((data) => setFilteredConcertPlaceList(data))
         .catch((error) =>
           console.error("Erreur lors de la recherche :", error),
         );
@@ -49,8 +51,8 @@ function EventSearchForm() {
       <section>
         <h2>Résultats</h2>
         <ul>
-          {filteredEventList.length ? (
-            filteredEventList.map((event) => (
+          {filteredConcertPlaceList.length ? (
+            filteredConcertPlaceList.map((event) => (
               <li key={event.id}>{event.name}</li>
             ))
           ) : (
@@ -62,4 +64,4 @@ function EventSearchForm() {
   );
 }
 
-export default EventSearchForm;
+export default ConcertPlaceSearchForm;

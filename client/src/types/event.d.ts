@@ -14,3 +14,7 @@ type EventData = {
   address: string;
   menu: string;
 };
+
+interface FormDataType {
+  date: string;
+}
