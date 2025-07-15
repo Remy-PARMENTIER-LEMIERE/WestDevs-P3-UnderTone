@@ -1,33 +1,32 @@
 import { useEffect, useRef, useState } from "react";
-import "./ArtistSearchForm.css";
 
-function SearchArtist() {
-  const [musicStyleList, setMusicStyleList] = useState<StyleTypes[]>([]);
+function ConcertPlaceSearchForm() {
+  const [typeList, setTypeList] = useState<StyleTypes[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3310/api/music-styles")
+    fetch("http://localhost:3310/api/types")
       .then((res) => res.json())
-      .then((data) => setMusicStyleList(data));
+      .then((data) => setTypeList(data));
   }, []);
 
   const nameInputRef = useRef<HTMLInputElement>(null);
-  const musicStyleInputRef = useRef<HTMLSelectElement>(null);
-  const [formObj, setFormObj] = useState<ArtistFormDataType | null>(null);
-  const [filteredArtistList, setFilteredArtistList] = useState<
-    FilteredArtistList[]
+  const typeInputRef = useRef<HTMLSelectElement>(null);
+  const [formObj, setFormObj] = useState<ConcertPlaceFormDataType | null>(null);
+  const [filteredConcertPlaceList, setFilteredConcertPlaceList] = useState<
+    FilteredConcertPlaceList[]
   >([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name")?.toString() || "";
-    const musicStyle = formData.get("musicStyle")?.toString() || "";
+    const type = formData.get("type")?.toString() || "";
 
-    setFormObj({ name, musicStyle });
+    setFormObj({ name, type });
   };
 
   useEffect(() => {
     if (!formObj) return;
-    console.log(filteredArtistList);
+    console.log(filteredConcertPlaceList);
     const params = new URLSearchParams();
 
     const queryTimer = setTimeout(() => {
@@ -36,11 +35,11 @@ function SearchArtist() {
       }
       fetch(`/api/search/artist?${params}`)
         .then((res) => res.json())
-        .then((data) => setFilteredArtistList(data));
+        .then((data) => setFilteredConcertPlaceList(data));
     }, 1500);
 
     return () => clearTimeout(queryTimer);
-  }, [formObj, filteredArtistList]);
+  }, [formObj, filteredConcertPlaceList]);
 
   return (
     <form onChange={handleChange}>
@@ -58,17 +57,17 @@ function SearchArtist() {
 
       <div className="input-group">
         <select
-          name="musicStyle"
-          id="music-style"
-          ref={musicStyleInputRef}
+          name="type"
+          id="type"
+          ref={typeInputRef}
           required
           autoComplete="off"
         >
-          <option value="">--Genre Musical--</option>
-          {musicStyleList.length &&
-            musicStyleList.map((musicStyle) => (
-              <option key={musicStyle.id} value={musicStyle.name}>
-                {musicStyle.name}
+          <option value="">--Type d'établissement--</option>
+          {typeList.length &&
+            typeList.map((type) => (
+              <option key={type.id} value={type.name}>
+                {type.name}
               </option>
             ))}
         </select>
@@ -76,12 +75,12 @@ function SearchArtist() {
       <section>
         <h2>Résultats</h2>
         <ul>
-          {filteredArtistList.length ? (
-            filteredArtistList.map((artist) => (
-              <li key={artist.id}>{artist.name}</li>
+          {filteredConcertPlaceList.length ? (
+            filteredConcertPlaceList.map((concert_place) => (
+              <li key={concert_place.id}>{concert_place.name}</li>
             ))
           ) : (
-            <li>Aucun artiste ne correspond à la recherche</li>
+            <li>Aucun Lieu ne correspond à la recherche</li>
           )}
         </ul>
       </section>
@@ -89,4 +88,4 @@ function SearchArtist() {
   );
 }
 
-export default SearchArtist;
+export default ConcertPlaceSearchForm;
