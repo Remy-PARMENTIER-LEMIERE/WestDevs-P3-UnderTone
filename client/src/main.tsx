@@ -8,6 +8,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 // Import the main app component
 import App from "./App";
 import Artist from "./pages/Artist/Artist";
+import ArtistProfile from "./pages/ArtistProfile/ArtistProfile";
 import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
 import ConcertPlaceCreation from "./pages/ConcertPlaceCreation/ConcertPlaceCreation";
 import Event from "./pages/Event/Event";
@@ -15,6 +16,7 @@ import Login from "./pages/Login/Login";
 import Research from "./pages/Research/Research";
 import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
+import UserCreation from "./pages/UserCreation/UserCreation";
 import { AuthProvider } from "./services/AuthContext";
 
 // Import additional components for new routes
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "new/user",
+        element: <UserCreation />,
+      },
+      {
+        path: "new/artist",
+        element: <ArtistProfile />,
       },
       {
         path: "artist/:id",
