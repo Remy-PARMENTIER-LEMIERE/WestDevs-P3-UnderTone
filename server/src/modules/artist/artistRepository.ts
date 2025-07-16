@@ -10,6 +10,34 @@ class ArtistRepository {
 
     return rows[0] as Artist;
   }
+
+  async artistSearch(name: string, musicStyle: string) {
+    const conditions: string[] = [];
+    const values: string[] = [];
+    // console.log(name, musicStyle);
+    if (name) {
+      conditions.push("LOWER(a.name) LIKE LOWER (?)");
+      values.push(`%${name}%`);
+    }
+    console.log(values);
+    /* if (musicStyle) {
+      conditions.push("LOWER(ms.name) = LOWER (?)");
+      values.push(musicStyle);
+    }*/
+
+    const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
+    console.log(where);
+    const [rows] = await databaseClient.query(
+      `SELECT DISTINCT a.user_id as id, a.name, a.profile_picture 
+       FROM artist a
+       LEFT JOIN artist_music_style ams ON a.user_id = ams.artist_id
+       LEFT JOIN music_style ms ON ams.music_style_id = ms.id
+       ${where}`,
+      values,
+    );
+    console.log(rows);
+    return rows;
+  }
 }
 
 export default new ArtistRepository();

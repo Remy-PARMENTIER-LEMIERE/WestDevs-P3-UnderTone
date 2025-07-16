@@ -5,7 +5,7 @@ function SearchArtist() {
   const [musicStyleList, setMusicStyleList] = useState<StyleTypes[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3310/api/music-styles")
+    fetch("http://localhost:3310/api/search/artist")
       .then((res) => res.json())
       .then((data) => setMusicStyleList(data));
   }, []);
@@ -17,8 +17,13 @@ function SearchArtist() {
     FilteredArtistList[]
   >([]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
-    const formData = new FormData(e.currentTarget);
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
+    const form = e.currentTarget.form as HTMLFormElement | null;
+    if (!form) return;
+
+    const formData = new FormData(form);
     const name = formData.get("name")?.toString() || "";
     const musicStyle = formData.get("musicStyle")?.toString() || "";
 
@@ -26,32 +31,36 @@ function SearchArtist() {
   };
 
   useEffect(() => {
-    if (!formObj) return;
-    console.log(filteredArtistList);
+    if (!formObj?.name && !formObj?.musicStyle) return;
     const params = new URLSearchParams();
 
     const queryTimer = setTimeout(() => {
       for (const [key, value] of Object.entries(formObj)) {
-        params.append(key, value);
+        if (value) {
+          params.append(key, value);
+        }
       }
-      fetch(`/api/search/artist?${params}`)
+      console.log(params);
+      fetch(`http://localhost:3310/api/search/artist?${params}`)
         .then((res) => res.json())
-        .then((data) => setFilteredArtistList(data));
+        .then((data) => setFilteredArtistList(data))
+        .catch((err) => console.error("Erreur fetch artist:", err));
     }, 1500);
 
     return () => clearTimeout(queryTimer);
-  }, [formObj, filteredArtistList]);
+  }, [formObj]);
 
   return (
-    <form onChange={handleChange}>
+    <form>
       <div className="input-group">
+        {console.log(filteredArtistList)}
         <input
           type="text"
           name="name"
           ref={nameInputRef}
           id="name"
-          required
           autoComplete="off"
+          onChange={handleChange}
         />
         <label htmlFor="name">nom</label>
       </div>
@@ -61,8 +70,8 @@ function SearchArtist() {
           name="musicStyle"
           id="music-style"
           ref={musicStyleInputRef}
-          required
           autoComplete="off"
+          onChange={handleChange}
         >
           <option value="">--Genre Musical--</option>
           {musicStyleList.length &&

@@ -16,4 +16,22 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { read };
+const artistSearch: RequestHandler = async (req, res, next) => {
+  console.log("poulet");
+  try {
+    const artistName = String(req.query.name);
+    const artistStyle = String(req.query.musicStyle);
+    console.log(artistName, artistStyle);
+    if (!artistName && !artistStyle) {
+      res.status(400).json("veuillez remplir au moins un champ");
+      return;
+    }
+
+    const result = await artistRepository.artistSearch(artistName, artistStyle);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { read, artistSearch };

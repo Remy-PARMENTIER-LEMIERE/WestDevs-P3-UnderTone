@@ -24,6 +24,7 @@ router.get("/items/:id", itemActions.read);
 router.post("/items", itemActions.add);
 
 router.get("/artist/:id", artistActions.read);
+router.get("/search/artist", artistActions.artistSearch);
 
 import concertPlaceActions from "./modules/concertPlace/concertPlaceActions";
 import * as files from "./utils/files";
