@@ -2,6 +2,7 @@ import express from "express";
 import multer from "multer";
 import artistActions from "./modules/artist/artistActions";
 import itemActions from "./modules/item/itemActions";
+import userActions from "./modules/user/userActions";
 import auth from "./utils/auth";
 import validation from "./utils/validation";
 
@@ -19,7 +20,12 @@ router.post(
   signInActions.add,
 );
 router.post("/login", validation.userValidation, auth.login);
-router.patch("/new/user");
+router.patch(
+  "/complete/user/:id",
+  upload.any(),
+  auth.verifyRequesterId,
+  userActions.add,
+);
 router.get("/items", itemActions.browse);
 router.get("/items/:id", itemActions.read);
 router.post("/items", itemActions.add);

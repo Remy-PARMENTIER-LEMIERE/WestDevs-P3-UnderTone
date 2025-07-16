@@ -12,19 +12,6 @@ class SignInRepository {
 
     return result.affectedRows;
   }
-
-  async update(
-    id: string,
-    profile_picture: string | null,
-    signup_date: Date | null,
-  ) {
-    const [result] = await databaseClient.query<Result>(
-      "UPDATE user SET profile_picture = ?, signup_date = ? WHERE id = ?",
-      [profile_picture, signup_date, id],
-    );
-
-    return result.affectedRows > 0;
-  }
 }
 
 export default new SignInRepository();

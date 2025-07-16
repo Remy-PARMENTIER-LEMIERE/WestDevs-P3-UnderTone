@@ -1,36 +1,52 @@
-/*import UserRepository from "./userRepository";
 import type { RequestHandler } from "express";
+import type { JwtPayload } from "jsonwebtoken";
+import userRepository from "./userRepository";
 
-const add: RequestHandler = async (req, res) => {
-  const { username, birthdate, profile_picture, email, password, status } =
-    req.body;
-
-  if (!username || !birthdate || !email || !password || !status) {
-    return res.status(400).json({ error: "Champs obligatoires manquants" });
-  }
-
+const edit: RequestHandler = async (req, res, next) => {
   try {
-    const signup_date = new Date();
+    const { id } = req.params;
+    const { profile_picture, signup_date } = req.body;
+    const { userId } = req.body.verifyToken as JwtPayload;
 
-    const result = await UserRepository.create({
-      username,
-      birthdate,
-      profile_picture,
-      email,
-      password,
-      status,
-      signup_date,
-      id: 0,
-    });
-
-    if (result === 1) {
-      return res.status(201).json({ message: "Inscription réussie" });
+    if (Number(userId) !== Number(id)) {
+      throw new Error("Vous n'êtes pas autorisé à modifier ce compte.");
     }
-    return res.status(500).json({ error: "Erreur lors de l'inscription" });
+
+    // const updateResult = await userRepository.update(
+    //   userId,
+    //   profile_picture,
+    //   birthdate,
+    // );
+
+    // if (updateResult) {
+    //   res.status(200).json("Votre compte a bien été mis à jour");
+    // } else {
+    //   res.status(404).json("Utilisateur non trouvé");
+    // }
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "Erreur serveur" });
+    next(error);
   }
 };
 
-export default { add };*/
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    const { username, email, password, role } = req.body;
+
+    const isEmailAviable = await userRepository.findByEmail(email);
+    if (isEmailAviable) {
+      throw new Error("Cet Email est déjà enregistré.");
+    }
+
+    const newUser = { username, email, password, role };
+
+    const insertNewUser = await userRepository.create(newUser);
+
+    if (insertNewUser) {
+      res.status(201).json("Votre compte a bien été créé");
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { edit, add };

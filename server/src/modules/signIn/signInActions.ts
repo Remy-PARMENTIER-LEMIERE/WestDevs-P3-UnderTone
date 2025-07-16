@@ -1,4 +1,5 @@
 import type { RequestHandler } from "express";
+import userRepository from "../user/userRepository";
 import signInRepository from "./signInRepository";
 
 const add: RequestHandler = async (req, res, next) => {
@@ -20,7 +21,7 @@ const edit: RequestHandler = async (req, res, next) => {
     const { id } = req.params;
     const { profile_picture, signup_date } = req.body;
 
-    const updateResult = await signInRepository.update(
+    const updateResult = await userRepository.update(
       id,
       profile_picture,
       signup_date,
