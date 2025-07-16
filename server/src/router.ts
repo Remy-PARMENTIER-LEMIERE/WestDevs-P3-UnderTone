@@ -15,7 +15,8 @@ router.post(
   auth.hashPassword,
   signInActions.add,
 );
-
+router.post("/login", validation.userValidation, auth.login);
+router.patch("/new/user");
 router.get("/items", itemActions.browse);
 router.get("/items/:id", itemActions.read);
 router.post("/items", itemActions.add);
@@ -30,8 +31,6 @@ import eventActions from "./modules/event/eventActions";
 
 router.get("/event/:id", eventActions.read);
 router.get("/event/search");
-
-router.post("/login", validation.userValidation, auth.login);
 
 /* ************************************************************************* */
 

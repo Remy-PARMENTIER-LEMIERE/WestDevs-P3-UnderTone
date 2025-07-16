@@ -15,4 +15,22 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { profile_picture, signup_date } = req.body;
+
+    const updateResult = await signInRepository.update(
+      id,
+      profile_picture,
+      signup_date,
+    );
+
+    if (updateResult) {
+      res.status(200).json("Votre compte a bien été mis à jour");
+    } else {
+      res.status(404).json("Utilisateur non trouvé");
+    }
+  } catch (error) {}
+};
 export default { add };
