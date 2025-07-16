@@ -18,16 +18,29 @@ router.post(
   auth.hashPassword,
   signInActions.add,
 );
+router.get("/refresh", auth.refreshToken);
+router.get("/logout", auth.logout);
 
 router.get("/items", itemActions.browse);
 router.get("/items/:id", itemActions.read);
 router.post("/items", itemActions.add);
 
+import * as files from "./utils/files";
+
 router.get("/artist/:id", artistActions.read);
+<<<<<<< HEAD
 router.get("/search/artist", artistActions.artistSearch);
+=======
+router.post(
+  "/new/artist",
+  files.uploadArtistFiles,
+  files.artistFiles,
+  auth.verifyRequesterId,
+  artistActions.add,
+);
+>>>>>>> 5589dc3388c4bad10c8fc71b10bb97d9f6683072
 
 import concertPlaceActions from "./modules/concertPlace/concertPlaceActions";
-import * as files from "./utils/files";
 
 router.get("/concert-place/:id", concertPlaceActions.read);
 router.post(

@@ -53,7 +53,6 @@ function SearchArtist() {
   return (
     <form>
       <div className="input-group">
-        {console.log(filteredArtistList)}
         <input
           type="text"
           name="name"
