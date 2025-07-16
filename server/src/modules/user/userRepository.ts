@@ -45,11 +45,11 @@ class UserRepository {
   async update(
     id: string,
     profile_picture: string | null,
-    signup_date: Date | null,
+    birthdate: Date | null,
   ) {
     const [result] = await databaseClient.query<Result>(
-      "UPDATE user SET profile_picture = ?, signup_date = ? WHERE id = ?",
-      [profile_picture, signup_date, id],
+      "UPDATE user SET profile_picture = ?, birthdate = ? WHERE id = ?",
+      [profile_picture, birthdate, id],
     );
 
     return result.affectedRows;

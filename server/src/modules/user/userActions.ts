@@ -5,7 +5,7 @@ import userRepository from "./userRepository";
 const edit: RequestHandler = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { profile_picture, signup_date } = req.body;
+    const { profile_picture, birthdate } = req.body;
     const { userId } = req.body.verifyToken as JwtPayload;
 
     if (Number(userId) !== Number(id)) {
