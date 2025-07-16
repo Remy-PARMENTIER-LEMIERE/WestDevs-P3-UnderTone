@@ -34,6 +34,15 @@ class ArtistRepository {
     return result.affectedRows;
   }
 
+  async createArtistStyle(artist_id: number, selectedStyle: SelectedStyle) {
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO artist_music_style (artist_id, music_style_id) VALUES (?, ?)",
+      [artist_id, selectedStyle.id],
+    );
+
+    return result.affectedRows;
+  }
+
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT a.user_id, a.name, a.description, a.demo, a.web_site, a.profile_picture,

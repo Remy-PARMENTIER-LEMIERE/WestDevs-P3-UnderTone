@@ -19,10 +19,13 @@ const read: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
+    console.warn(req.body);
+    console.warn(req.files);
+    console.warn(req.path);
     const { userId, userStatus } = req.body.verifyToken as JwtPayload;
 
     if (userStatus === "artist") {
-      if (req.body.name) {
+      if (!req.body.name) {
         res.status(400).json("Champ obligatoire manquant (Nom d'artiste)");
         return;
       }
@@ -93,10 +96,26 @@ const add: RequestHandler = async (req, res, next) => {
         throw new Error("Echec de l'inscription des données.");
       }
 
-      // MusicStyles to write in DB *******************************************
-      // const {musicStyles} = artist;
+      let { selectedStyles } = artist;
+      selectedStyles = JSON.parse(selectedStyles);
 
-      // **********************************************************************
+      const resultStyles = await Promise.all(
+        selectedStyles.map(async (ss: SelectedStyle) => {
+          const affectedRows = await artistRepository.createArtistStyle(
+            Number(userId),
+            ss,
+          );
+          return affectedRows;
+        }),
+      );
+
+      const allStylesSuccessful = resultStyles.every(
+        (affectedRows) => affectedRows === 1,
+      );
+      if (!allStylesSuccessful) {
+        throw new Error("Certains styles n'ont pas pu être enregistrés");
+      }
+
       const { photos } = artist;
 
       const resultPhotos = await Promise.all(
@@ -115,9 +134,7 @@ const add: RequestHandler = async (req, res, next) => {
       if (!allPhotosSuccessful) {
         throw new Error("Certaines photos n'ont pas pu être enregistrées");
       }
-      console.warn(req.body);
-      console.warn(req.files);
-      console.warn(req.path);
+      res.status(201).json("Nouvelles données enregistrées ! 🔥");
     } else {
       res
         .status(403)
@@ -125,8 +142,6 @@ const add: RequestHandler = async (req, res, next) => {
           "Vous n'avez pas les permissions pour enregistrer un nouvel artiste.",
         );
     }
-
-    res.status(201).json("Nouvelles données enregistrées ! 🔥");
   } catch (err) {
     next(err);
   }

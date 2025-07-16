@@ -39,3 +39,8 @@ type ArtistToInsert = {
   spotify_link: string;
   youtube_link: string;
 };
+
+type SelectedStyle = {
+  id: number;
+  label: number;
+};
