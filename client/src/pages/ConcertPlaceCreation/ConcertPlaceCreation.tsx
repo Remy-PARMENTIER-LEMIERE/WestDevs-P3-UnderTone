@@ -9,8 +9,6 @@ import OpeningHoursForm from "../../components/FormInputs/OpeningHoursForm/Openi
 import SocialNetworksForm, {
   type SocialNetwork,
 } from "../../components/FormInputs/SocialNetworksForm/SocialNetworksForm";
-import InputMenu from "./InputMenu/InputMenu";
-import InputsType from "./InputsType/InputsType";
 import "./ConcertPlaceCreation.css";
 import InputMenu from "./InputMenu/InputMenu";
 import InputsType from "./InputsType/InputsType";
