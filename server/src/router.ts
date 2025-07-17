@@ -61,6 +61,24 @@ import eventActions from "./modules/event/eventActions";
 router.get("/event/:id", eventActions.read);
 router.get("/event/search");
 
+import favoriteActions from "./modules/favorite/favoriteActions";
+
+router.get(
+  "/favorites/:targetId/:targetStatus",
+  auth.verifyRequesterId,
+  favoriteActions.readFavorite,
+);
+router.post(
+  "/favorites/:targetId/:targetStatus",
+  auth.verifyRequesterId,
+  favoriteActions.addFavorite,
+);
+router.delete(
+  "/favorites/:targetId/:targetStatus",
+  auth.verifyRequesterId,
+  favoriteActions.deleteFavorite,
+);
+
 /* ************************************************************************* */
 
 export default router;
