@@ -54,6 +54,12 @@ router.get("/event/search");
 
 router.post("/login", validation.userValidation, auth.login);
 
+import favoriteController from "./modules/favorite/favoriteActions";
+
+router.get("/favorites/:type/:userId/:targetId", favoriteController.isFavorite);
+router.post("/favorites/:type", favoriteController.addFavorite);
+router.delete("/favorites/:type", favoriteController.removeFavorite);
+
 /* ************************************************************************* */
 
 export default router;
