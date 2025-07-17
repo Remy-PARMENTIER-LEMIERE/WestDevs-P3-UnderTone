@@ -137,7 +137,7 @@
   }
 }
 
-.home-a > div:first-child {
+.home-buttons > div:first-child {
   display: flex;
   gap: 2rem;
 }
