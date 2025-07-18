@@ -19,6 +19,7 @@ import SignInForm from "./pages/SignIn/SignInForm";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
 import UserCreation from "./pages/UserCreation/UserCreation";
 import { AuthProvider } from "./services/AuthContext";
+import NotFound from "./pages/NotFound404/NotFound404";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "event/:id",
         element: <Event />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
