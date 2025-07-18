@@ -1,6 +1,6 @@
 .contact-page {
   /* display: flex; */
-  /* flex-direction: column; */
+
   /* align-items: center; */
   padding: 32px 16px;
   /* background: transparent; */
@@ -120,14 +120,14 @@ button[type="submit"]:hover {
   align-items: center;
 }
 
-.google-map {
+.contact-map-block iframe {
   width: 100%;
   height: 250px;
   border: none;
   border-radius: 16px;
 }
 
-.contact-info {
+.contact-map-block div {
   margin-top: 16px;
   font-size: 0.95rem;
   text-align: center;
@@ -167,8 +167,7 @@ button[type="submit"]:hover {
     gap: 20px;
   }
 
-  .contact-info {
-    text-align: left;
+  .contact-map-block div {
     font-size: 1rem;
   }
 }
