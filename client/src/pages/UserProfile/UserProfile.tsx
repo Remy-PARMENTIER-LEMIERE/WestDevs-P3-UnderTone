@@ -125,7 +125,7 @@ function UserProfile() {
               </li>
             ))
           ) : (
-            <li>Aucun évènement à afficher</li>
+            <li style={{ paddingLeft: "16px" }}>Aucun évènement à afficher</li>
           )}
         </ul>
       </section>

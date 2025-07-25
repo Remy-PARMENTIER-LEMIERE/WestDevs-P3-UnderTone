@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./CarouselFavorites.css";
+import { Link } from "react-router";
 
 function CarouselFavorites({ variant }: { variant: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -84,15 +85,17 @@ function CarouselFavorites({ variant }: { variant: string }) {
           </button>
           <div className="carousel-track">
             {favoritesDatas.map((favorite, index) => (
-              <button
-                type="button"
+              <Link
+                to={`/app/${variant === "artist" ? variant : "concert-place"}/${favorite.id}`}
                 key={favorite.id}
                 className={`card ${getCardClass(index)}`}
                 data-index={index}
-                onClick={() => updateCarousel(index)}
               >
-                <img src={favorite.profile_picture} alt={favorite.name} />
-              </button>
+                <figure>
+                  <img src={favorite.profile_picture} alt={favorite.name} />
+                  <figcaption>@{favorite.name}</figcaption>
+                </figure>
+              </Link>
             ))}
           </div>
           <button
