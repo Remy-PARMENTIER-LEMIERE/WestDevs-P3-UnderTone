@@ -1,0 +1,58 @@
+.opening-hours-form {
+  background-color: var(--primary-color);
+  border-radius: 15px;
+  width: 300px;
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 20px;
+
+    .input-group {
+      width: 120px;
+
+      input {
+        text-align: center;
+      }
+    }
+
+    .input-group:nth-child(3),
+    .input-group:nth-child(4) {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+  }
+
+  .checkbox-holder {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    input {
+      display: none;
+    }
+
+    label {
+      display: block;
+      padding: auto;
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--secondary-color);
+    }
+
+    input:checked + label {
+      background-color: var(--secondary-color);
+      border: 2px solid var(--darker-text-color);
+    }
+  }
+
+  button:first-of-type {
+    background-color: var(--lighter-primary-color);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    height: 35px;
+    width: 120px;
+    display: block;
+  }
+}

@@ -154,47 +154,49 @@ function OpeningHoursForm({
   };
 
   return (
-    <section className="opening-hours">
+    <section className="opening-hours-form">
       <h2>Horaires</h2>
-      <div className="input-group">
-        <input
-          type="time"
-          name="opening-hour-noon"
-          id="opening-hour-noon"
-          ref={openingHourNoonRef}
-        />
-        <label htmlFor="opening-hour-noon">Ouverture</label>
-      </div>
+      <section>
+        <div className="input-group">
+          <input
+            type="time"
+            name="opening-hour-noon"
+            id="opening-hour-noon"
+            ref={openingHourNoonRef}
+          />
+          <label htmlFor="opening-hour-noon">Ouverture</label>
+        </div>
 
-      <div className="input-group">
-        <input
-          type="time"
-          name="closing-hour-noon"
-          id="closing-hour-noon"
-          ref={closingHourNoonRef}
-        />
-        <label htmlFor="closing-hour-noon">Fermeture</label>
-      </div>
+        <div className="input-group">
+          <input
+            type="time"
+            name="closing-hour-noon"
+            id="closing-hour-noon"
+            ref={closingHourNoonRef}
+          />
+          <label htmlFor="closing-hour-noon">Fermeture</label>
+        </div>
 
-      <div className="input-group">
-        <input
-          type="time"
-          name="opening-hour-evening"
-          id="opening-hour-evening"
-          aria-label="Deuxième Ouverture"
-          ref={openingHourEveningRef}
-        />
-      </div>
+        <div className="input-group">
+          <input
+            type="time"
+            name="opening-hour-evening"
+            id="opening-hour-evening"
+            aria-label="Deuxième Ouverture"
+            ref={openingHourEveningRef}
+          />
+        </div>
 
-      <div className="input-group">
-        <input
-          type="time"
-          name="closing-hour-evening"
-          id="closing-hour-evening"
-          aria-label="Deuxième Fermeture"
-          ref={closingHourEveningRef}
-        />
-      </div>
+        <div className="input-group">
+          <input
+            type="time"
+            name="closing-hour-evening"
+            id="closing-hour-evening"
+            aria-label="Deuxième Fermeture"
+            ref={closingHourEveningRef}
+          />
+        </div>
+      </section>
       <div className="checkbox-holder">
         {weekDays.map((wd) => (
           <React.Fragment key={wd.id}>
