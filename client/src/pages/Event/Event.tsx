@@ -54,7 +54,10 @@ function Event() {
               <img src={event.image} alt="affiche de la soirée" />
             </div>
             <div className="event-place">
-              <p>{event.concertPlaceName}</p>
+              <Link to={`/concert-place/${event.concertPlaceId}`}>
+                {event.concertPlaceName}
+              </Link>
+
               <p>{event.address}</p>
               <p>{event.description}</p>
             </div>

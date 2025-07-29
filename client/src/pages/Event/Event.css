@@ -1,4 +1,5 @@
 .event-container {
+  height: calc(100vh - 56px - 85px);
   display: flex;
   gap: 2rem;
   section {
@@ -83,6 +84,7 @@
 }
 .event-place {
   margin-top: 2rem;
+  text-align: center;
 }
 .event-place :first-child {
   font-size: 37px;
