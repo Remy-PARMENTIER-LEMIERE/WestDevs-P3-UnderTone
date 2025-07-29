@@ -48,6 +48,7 @@ router.post(
 );
 
 import concertPlaceActions from "./modules/concertPlace/concertPlaceActions";
+import typeActions from "./modules/type/typeActions";
 
 router.get("/concert-place/:id", concertPlaceActions.read);
 router.post(
@@ -57,6 +58,7 @@ router.post(
   auth.verifyRequesterId,
   concertPlaceActions.add,
 );
+router.get("/types", typeActions.browse);
 router.get("/search/concert-place", concertPlaceActions.locationSearch);
 
 import eventActions from "./modules/event/eventActions";

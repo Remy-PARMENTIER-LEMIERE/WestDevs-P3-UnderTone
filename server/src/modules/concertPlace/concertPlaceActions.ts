@@ -141,14 +141,10 @@ const add: RequestHandler = async (req, res, next) => {
 
 const locationSearch: RequestHandler = async (req, res, next) => {
   try {
-    if (!req.query.q) {
-      res.status(400).json("Veuillez entrer un nom à rechercher.");
-      return;
-    }
-
-    const name = String(req.query.q);
-    const result = await concertPlaceRepository.locationSearch(name);
-    res.json(result);
+    const name = req.query.name ? String(req.query.name) : null;
+    const type = req.query.name ? String(req.query.type) : null;
+    const result = await concertPlaceRepository.locationSearch(name, type);
+    res.status(200).json(result);
   } catch (err) {
     next(err);
   }
