@@ -73,6 +73,26 @@ class ConcertPlaceRepository {
     const { id } = rows[0] as { id: number };
     return id;
   }
+  async locationSearch(name: string | null, type: string | null) {
+    const conditions: string[] = [];
+    const values: string[] = [];
+    if (name) {
+      conditions.push("LOWER(cp.name) LIKE LOWER (?)");
+      values.push(`%${name}%`);
+    }
+    if (type) {
+      conditions.push("LOWER(type.name) = LOWER(?)");
+      values.push(type);
+    }
+
+    const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
+    const [rows] = await databaseClient.query<Rows>(
+      `SELECT cp.user_id, cp.name, cp.address, cp.profile_picture, JSON_ARRAYAGG(JSON_OBJECT('week_day', oh.week_day, "opening_hour_noon", oh.opening_hour_noon, "closing_hour_noon", oh.closing_hour_noon, "opening_hour_evening", oh.opening_hour_evening, "closing_hour_evening", oh.closing_hour_evening)) FROM concert_place cp JOIN opening_hour AS oh ON cp.user_id = oh.concert_place_id JOIN concert_place_type AS cpt ON cpt.concert_place_id = cp.user_id JOIN type AS t ON t.id = cpt.type_id ${where} GROUP BY cp.user_id, cp.name, cp.address, cp.profile_picture;`,
+      values,
+    );
+
+    return rows;
+  }
 }
 
 export default new ConcertPlaceRepository();

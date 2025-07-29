@@ -26,20 +26,20 @@ function ConcertPlaceSearchForm() {
 
   useEffect(() => {
     if (!formObj) return;
-    console.log(filteredConcertPlaceList);
+
     const params = new URLSearchParams();
 
     const queryTimer = setTimeout(() => {
       for (const [key, value] of Object.entries(formObj)) {
         params.append(key, value);
       }
-      fetch(`/api/search/artist?${params}`)
+      fetch(`http://localhost:3310/api/search/concert-place?${params}`)
         .then((res) => res.json())
         .then((data) => setFilteredConcertPlaceList(data));
     }, 1500);
 
     return () => clearTimeout(queryTimer);
-  }, [formObj, filteredConcertPlaceList]);
+  }, [formObj]);
 
   return (
     <form onChange={handleChange}>

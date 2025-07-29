@@ -139,4 +139,15 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { read, add };
+const locationSearch: RequestHandler = async (req, res, next) => {
+  try {
+    const name = req.query.name ? String(req.query.name) : null;
+    const type = req.query.name ? String(req.query.type) : null;
+    const result = await concertPlaceRepository.locationSearch(name, type);
+    res.status(200).json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { read, add, locationSearch };
