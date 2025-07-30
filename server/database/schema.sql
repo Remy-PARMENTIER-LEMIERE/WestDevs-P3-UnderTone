@@ -15,7 +15,8 @@ INSERT INTO user
 VALUES
 ('Benji', '1989-07-16', 'https://randomuser.me/api/portraits/men/75.jpg', 'benjamin.rambrant@gmail.com', '$argon2id$v=19$m=16,t=2,p=1$S3ZSTW95YUNHdHFOdVI5Nw$j2Iamkw4GqOH/YPN70XtAw', 'artist', '2025-06-20'), 
 ('Tristan', '2000-07-24', 'https://randomuser.me/api/portraits/men/73.jpg', 'tristan.zubiarrain@gmail.com', '$argon2id$v=19$m=16,t=2,p=1$M09nRnRNTTl4ZnJ3VlMzVQ$8z2YrHdnjz0QwUxk1baSJQ', 'concert_place', '2025-06-21'),
-('Guillaume', '1975-05-12', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfilguillaume.png', 'guillaume-et-fils@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-21');
+('Guillaume', '1975-05-12', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfilguillaume.png', 'guillaume-et-fils@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-21'), 
+('Weber', '1992-04-18', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfileweber.png', 'weber@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-21');
 
 CREATE TABLE artist (
 user_id INT PRIMARY KEY NOT NULL,
@@ -118,8 +119,10 @@ FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 INSERT INTO concert_place
 (user_id, name, description, web_site, profile_picture, facebook_link, instagram_link, x_link, menu, address) 
 VALUES
-(2, "Vent Débarasse", "Vent Débarasse vous invite à savourer des plats faits maison, principalements maritimes, au rythme de la musique live. \n\nChaque soir, des artistes montent sur scène pour accompagner votre repas de notes jazz, soul ou pop ! 🍹 🪇 🎵", "vent-debarasse.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/vent-debarasse.jpg", "facebook.com", "instagram.com", "twitter.com", "http://localhost:3310/assets/menus/vent-debarasse.pdf", '3 rue Erik Satie\n44400 Rezé'), 
-(3, "Guillaume et Fils", "Chez Guillaume et Fils, dégustez une cuisine locale raffinée au son d’ensembles jazz intimistes. \n\nCe lieu chaleureux mêle élégance et convivialité, parfait pour une soirée entre amis ou un dîner romantique. \n\nLes chefs travaillent des produits frais du marché tandis que des musiciens talentueux vous enveloppent de leurs mélodies feutrées.", "https://www.guillaume-et-fils.fr", 'http://localhost:3310/assets/images/concert-place-profile-picture/improfilguillaume.png', "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", '', '62, chemin Bernadette Couturier, 44800 Saint-Herblain' );
+(2, "Vent Débarasse", "Vent Débarasse vous invite à savourer des plats faits maison, principalements maritimes, au rythme de la musique live. \n\nChaque soir, des artistes montent sur scène pour accompagner votre repas de notes jazz, soul ou pop ! 🍹 🪇 🎵", "vent-debarasse.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/vent-debarasse.jpg", "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", "http://localhost:3310/assets/menus/vent-debarasse.pdf", '3 rue Erik Satie\n44400 Rezé'), 
+(3, "Guillaume et Fils", "Chez Guillaume et Fils, dégustez une cuisine locale raffinée au son d’ensembles jazz intimistes. \n\nCe lieu chaleureux mêle élégance et convivialité, parfait pour une soirée entre amis ou un dîner romantique. \n\nLes chefs travaillent des produits frais du marché tandis que des musiciens talentueux vous enveloppent de leurs mélodies feutrées.", "https://www.guillaume-et-fils.fr", 'http://localhost:3310/assets/images/concert-place-profile-picture/improfilguillaume.png', "https://www.facebook.com", "https://www.instagram.com", '', '', '62, chemin Bernadette Couturier, 44800 Saint-Herblain' ), 
+(4,  "Weber", "Le Weber est le repaire incontournable des fans de rock indépendant. \n\nTous les jeudis, des scènes ouvertes enflamment l’endroit, attirant musiciens locaux et passionnés de riffs bruts. \n\nLe lieu propose une carte riche en bières artisanales et burgers maison dans une ambiance industrielle et chaleureuse, fidèle à l’esprit underground.", 
+"http://www.weber.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/improfilweber.png", "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", '', '12, rue Jérôme Guillou, 44380 Saint-Nazaire' );
 
 CREATE TABLE favorite_concert_place (
 user_id INT NOT NULL,
@@ -160,7 +163,14 @@ VALUES
 (3, "Jeudi", "12:00", "14:30", "", ""),
 (3, "Vendredi", "", "", "19:00", "22:00"),
 (3, "Samedi", "12:00", "14:30", "19:00", "22:00"),
-(3, "Dimanche", "", "", "", "");
+(4, "Dimanche", "", "", "", ""), 
+(4, "Lundi", "", "", "", ""),
+(4, "Mardi", "", "", "17:00", "00:00"),
+(4, "Mercredi", "", "", "17:00", "00:00"),
+(4, "Jeudi", "", "", "17:00", "01:00"),
+(4, "Vendredi", "", "", "16:00", "01:00"),
+(4, "Samedi", "", "", "17:00", "01:00"),
+(4, "Dimanche", "", "", "", "");
 
 CREATE TABLE concert_place_photo (
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -180,7 +190,10 @@ VALUES
 ('http://localhost:3310/assets/images/concert-place-photo/vent-debarasse-saumon2.jpeg', '2025-06-21', 2), 
 ('http://localhost:3310/assets/images/concert-place-photo/imguillaumeun.png', '2025-06-21', 3), 
 ('http://localhost:3310/assets/images/concert-place-photo/imguillaumedeux.png', '2025-06-21', 3), 
-('http://localhost:3310/assets/images/concert-place-photo/imguillaumetrois.png', '2025-06-21', 3);
+('http://localhost:3310/assets/images/concert-place-photo/imguillaumetrois.png', '2025-06-21', 3),
+('http://localhost:3310/assets/images/concert-place-photo/imweberun.png', '2025-06-21', 4),
+('http://localhost:3310/assets/images/concert-place-photo/imweberdeux.png', '2025-06-21', 4),
+('http://localhost:3310/assets/images/concert-place-photo/imwebertrois.png', '2025-06-21', 4);
 
 CREATE TABLE type (
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -205,7 +218,8 @@ INSERT INTO concert_place_type
 (concert_place_id, type_id)
 VALUES
 (2, 1),
-(3, 1);
+(3, 1), 
+(4, 2);
 
 CREATE TABLE event (
 id INT PRIMARY KEY AUTO_INCREMENT,
