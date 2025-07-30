@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import ConcertPlaceSearchResult from "../ConcertPlaceSearchResult/ConcertPlaceSearchResult";
 
 function ConcertPlaceSearchForm() {
   const [typeList, setTypeList] = useState<StyleTypes[]>([]);
@@ -15,6 +16,12 @@ function ConcertPlaceSearchForm() {
   const [filteredConcertPlaceList, setFilteredConcertPlaceList] = useState<
     FilteredConcertPlaceList[]
   >([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3310/api/search/concert-place")
+      .then((res) => res.json())
+      .then((data) => setFilteredConcertPlaceList(data));
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
     const formData = new FormData(e.currentTarget);
@@ -72,15 +79,7 @@ function ConcertPlaceSearchForm() {
       </select>
       <section>
         <h2>Résultats</h2>
-        <ul>
-          {filteredConcertPlaceList.length ? (
-            filteredConcertPlaceList.map((concert_place) => (
-              <li key={concert_place.id}>{concert_place.name}</li>
-            ))
-          ) : (
-            <li>Aucun Lieu ne correspond à la recherche</li>
-          )}
-        </ul>
+        <ConcertPlaceSearchResult concertPlaceList={filteredConcertPlaceList} />
       </section>
     </form>
   );
