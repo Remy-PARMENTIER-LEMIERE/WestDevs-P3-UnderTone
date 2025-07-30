@@ -23,6 +23,7 @@ import SplashScreen from "./pages/SplashScreen/SplashScreen";
 import UserCreation from "./pages/UserCreation/UserCreation";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import { AuthProvider } from "./services/AuthContext";
+import CGU from "./pages/CGU/CGU";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <NotFound />,
+      },
+      {
+        path: "/CGU",
+        element: <CGU />,
       },
     ],
   },
