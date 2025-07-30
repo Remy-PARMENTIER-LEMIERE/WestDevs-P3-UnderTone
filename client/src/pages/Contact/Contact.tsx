@@ -1,13 +1,20 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import "../../assets/styles/forms.css";
 import "./Contact.css";
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSent(true);
+    toast.success("Message envoyé avec succès ✉️");
+    setTimeout(() => {
+      navigate("/app/home");
+    }, 1500);
   };
   return (
     <main className="contact-page">
