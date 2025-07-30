@@ -41,7 +41,10 @@ function CGU() {
       <p>
         Les photos, extraits vidéos et sons utilisés dans l’application peuvent
         provenir de sources externes. Les auteurs et/ou titulaires des droits
-        sont systématiquement cités lorsque cela est requis.
+        sont systématiquement cités lorsque cela est requis. Les fichiers audios
+        cités ci-dessous sont libres de droits et peuvent être utilisés
+        conformément aux termes des licences accessibles via les liens
+        ci-dessous.
         <br />
         <strong>crédits</strong> <br />
         Auteur: <a href="https://soundcloud.com/jenseast">Jens East</a>
