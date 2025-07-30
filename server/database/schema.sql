@@ -16,7 +16,9 @@ VALUES
 ('Benji', '1989-07-16', 'https://randomuser.me/api/portraits/men/75.jpg', 'benjamin.rambrant@gmail.com', '$argon2id$v=19$m=16,t=2,p=1$S3ZSTW95YUNHdHFOdVI5Nw$j2Iamkw4GqOH/YPN70XtAw', 'artist', '2025-06-20'), 
 ('Tristan', '2000-07-24', 'https://randomuser.me/api/portraits/men/73.jpg', 'tristan.zubiarrain@gmail.com', '$argon2id$v=19$m=16,t=2,p=1$M09nRnRNTTl4ZnJ3VlMzVQ$8z2YrHdnjz0QwUxk1baSJQ', 'concert_place', '2025-06-21'),
 ('Guillaume', '1975-05-12', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfilguillaume.png', 'guillaume-et-fils@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-21'), 
-('Weber', '1992-04-18', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfileweber.png', 'weber@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-21');
+('Weber', '1992-04-18', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfileweber.png', 'weber@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-21'),
+('Maillot', '1983-12-20', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfilmaillot.png', 'maillot@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-22'),
+('Toussaint', '1976-02-14', 'http://localhost:3310/assets/images/concert-place-profile-picture/improfiltoussaint.png', 'toussaint@gmail.fr', '$argon2id$v=19$m=16,t=2,p=1$WHZnZm5MajU3dGxPTDhOYQ$HH/o0irIqZLdhW1cmm7xNw', 'concert_place', '2025-06-22');
 
 CREATE TABLE artist (
 user_id INT PRIMARY KEY NOT NULL,
@@ -122,7 +124,9 @@ VALUES
 (2, "Vent Débarasse", "Vent Débarasse vous invite à savourer des plats faits maison, principalements maritimes, au rythme de la musique live. \n\nChaque soir, des artistes montent sur scène pour accompagner votre repas de notes jazz, soul ou pop ! 🍹 🪇 🎵", "vent-debarasse.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/vent-debarasse.jpg", "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", "http://localhost:3310/assets/menus/vent-debarasse.pdf", '3 rue Erik Satie\n44400 Rezé'), 
 (3, "Guillaume et Fils", "Chez Guillaume et Fils, dégustez une cuisine locale raffinée au son d’ensembles jazz intimistes. \n\nCe lieu chaleureux mêle élégance et convivialité, parfait pour une soirée entre amis ou un dîner romantique. \n\nLes chefs travaillent des produits frais du marché tandis que des musiciens talentueux vous enveloppent de leurs mélodies feutrées.", "https://www.guillaume-et-fils.fr", 'http://localhost:3310/assets/images/concert-place-profile-picture/improfilguillaume.png', "https://www.facebook.com", "https://www.instagram.com", '', '', '62, chemin Bernadette Couturier, 44800 Saint-Herblain' ), 
 (4,  "Weber", "Le Weber est le repaire incontournable des fans de rock indépendant. \n\nTous les jeudis, des scènes ouvertes enflamment l’endroit, attirant musiciens locaux et passionnés de riffs bruts. \n\nLe lieu propose une carte riche en bières artisanales et burgers maison dans une ambiance industrielle et chaleureuse, fidèle à l’esprit underground.", 
-"http://www.weber.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/improfilweber.png", "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", '', '12, rue Jérôme Guillou, 44380 Saint-Nazaire' );
+"https://www.weber.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/improfilweber.png", "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", '', '12, rue Jérôme Guillou, 44380 Saint-Nazaire' ), 
+(5, "Maillot", "Chez Maillot, les saveurs des îles rencontrent les rythmes afro-caraïbéens dans un décor haut en couleurs. \n\nTapas épicées, rhums arrangés, concerts live de percussions et guitares créoles animent vos soirées. \n\nTous les week-ends, la piste s’anime et invite à la danse dans une ambiance conviviale et festive.", "https://www.maillot.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/improfilmaillot.png", "", "https://www.instagram.com", '', '', '32, rue de Michaud, 44100 Nantes'), 
+(6, 'Toussaint', "Le piano-bar Toussaint séduit par son atmosphère feutrée, ses banquettes en velours et ses lumières tamisées. \n\nDes artistes soul, jazz ou chanson française s’y produisent chaque soir. \n\nParfait pour une soirée posée autour d’un bon vin ou d’un cocktail signature, ce lieu invite à la détente et à la contemplation musicale.", "https://www.toussaint.fr", "http://localhost:3310/assets/images/concert-place-profile-picture/improfiltoussaint.png", "https://www.facebook.com", "https://www.instagram.com", "https://www.twitter.com", '', '1, avenue Colas, 44200 Rezé');
 
 CREATE TABLE favorite_concert_place (
 user_id INT NOT NULL,
@@ -165,12 +169,26 @@ VALUES
 (3, "Samedi", "12:00", "14:30", "19:00", "22:00"),
 (4, "Dimanche", "", "", "", ""), 
 (4, "Lundi", "", "", "", ""),
-(4, "Mardi", "", "", "17:00", "00:00"),
-(4, "Mercredi", "", "", "17:00", "00:00"),
+(4, "Mardi", "", "", "17:00", "00:30"),
+(4, "Mercredi", "", "", "17:00", "00:30"),
 (4, "Jeudi", "", "", "17:00", "01:00"),
 (4, "Vendredi", "", "", "16:00", "01:00"),
 (4, "Samedi", "", "", "17:00", "01:00"),
-(4, "Dimanche", "", "", "", "");
+(4, "Dimanche", "", "", "", ""), 
+(5, "Lundi", "", "", "", ""),
+(5, "Mardi", "11:30", "13:30", "20:00", "23:30"),
+(5, "Mercredi", "11:30", "13:30", "19:00", "22:30"),
+(5, "Jeudi", "", "", "", ""),
+(5, "Vendredi", "12:00", "14:30", "20:00", "23:30"),
+(5, "Samedi", "11:30", "13:30", "19:00", "22:30"),
+(5, "Dimanche", "", "", "", ""), 
+(6, "Lundi", "", "", "", ""),
+(6, "Mardi", "", "", "17:00", "00:30"),
+(6, "Mercredi", "", "", "17:00", "00:30"),
+(6, "Jeudi", "", "", "17:00", "01:00"),
+(6, "Vendredi", "", "", "16:00", "01:00"),
+(6, "Samedi", "", "", "17:00", "01:00"),
+(6, "Dimanche", "", "", "", "");
 
 CREATE TABLE concert_place_photo (
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -193,7 +211,13 @@ VALUES
 ('http://localhost:3310/assets/images/concert-place-photo/imguillaumetrois.png', '2025-06-21', 3),
 ('http://localhost:3310/assets/images/concert-place-photo/imweberun.png', '2025-06-21', 4),
 ('http://localhost:3310/assets/images/concert-place-photo/imweberdeux.png', '2025-06-21', 4),
-('http://localhost:3310/assets/images/concert-place-photo/imwebertrois.png', '2025-06-21', 4);
+('http://localhost:3310/assets/images/concert-place-photo/imwebertrois.png', '2025-06-21', 4),
+('http://localhost:3310/assets/images/concert-place-photo/immaillotun.png', '2025-06-21', 5),
+('http://localhost:3310/assets/images/concert-place-photo/immaillotdeux.png', '2025-06-21', 5),
+('http://localhost:3310/assets/images/concert-place-photo/immaillottrois.png', '2025-06-21', 5),
+('http://localhost:3310/assets/images/concert-place-photo/imtoussaintun.png', '2025-06-21', 6),
+('http://localhost:3310/assets/images/concert-place-photo/imtoussaintdeux.png', '2025-06-21', 6),
+('http://localhost:3310/assets/images/concert-place-photo/imtoussainttrois.png', '2025-06-21', 6);
 
 CREATE TABLE type (
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -219,7 +243,9 @@ INSERT INTO concert_place_type
 VALUES
 (2, 1),
 (3, 1), 
-(4, 2);
+(4, 2), 
+(5, 1),
+(6, 2);
 
 CREATE TABLE event (
 id INT PRIMARY KEY AUTO_INCREMENT,
