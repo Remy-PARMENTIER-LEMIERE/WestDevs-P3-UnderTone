@@ -9,6 +9,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 import App from "./App";
 import Artist from "./pages/Artist/Artist";
 import ArtistCreation from "./pages/ArtistCreation/ArtistCreation";
+import CGU from "./pages/CGU/CGU";
 import ConcertPlace from "./pages/ConcertPlace/ConcertPlace";
 import ConcertPlaceCreation from "./pages/ConcertPlaceCreation/ConcertPlaceCreation";
 import Contact from "./pages/Contact/Contact";
@@ -23,7 +24,6 @@ import SplashScreen from "./pages/SplashScreen/SplashScreen";
 import UserCreation from "./pages/UserCreation/UserCreation";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import { AuthProvider } from "./services/AuthContext";
-import CGU from "./pages/CGU/CGU";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
