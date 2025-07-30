@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import "./CGU.css";
 
 function CGU() {
@@ -5,9 +6,9 @@ function CGU() {
     <main className="CGU">
       <h1>Conditions Générales d’Utilisation (CGU)</h1>
       <p>
-        <strong>Application :</strong> [Nom de l'application]
+        <strong>Application :</strong> [Undertone]
         <br />
-        <strong>Date de mise à jour :</strong> [JJ/MM/AAAA]
+        <strong>Date de mise à jour :</strong> [29/07/2025]
       </p>
 
       <h2>1. Objet</h2>
@@ -136,7 +137,11 @@ function CGU() {
       <h2>8. Contact</h2>
       <p>
         Pour toute question concernant l’application ou les présentes CGU, vous
-        pouvez contacter l’équipe projet à : [email étudiant ou page contact].
+        pouvez contacter l’équipe projet à : [
+        <Link to="/app/contact">
+          <p>contact</p>
+        </Link>
+        ].
       </p>
     </main>
   );
