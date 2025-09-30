@@ -3,7 +3,10 @@ import favoriteEventRepository from "./favoriteEventRepository";
 
 const browseFavoritesPastEvents: RequestHandler = async (req, res, next) => {
   try {
-    const { userId } = req.body.verifyToken;
+    if (!req.requester) {
+      throw new Error("Utilisateur non-authentifié");
+    }
+    const { userId } = req.requester;
 
     const favorites = await favoriteEventRepository.readAllPastFavorites(
       Number(userId),
@@ -25,7 +28,10 @@ const browseFavoritesUpcommingEvents: RequestHandler = async (
   next,
 ) => {
   try {
-    const { userId } = req.body.verifyToken;
+    if (!req.requester) {
+      throw new Error("Utilisateur non-authentifié");
+    }
+    const { userId } = req.requester;
 
     const favorites = await favoriteEventRepository.readAllUpcommingFavorites(
       Number(userId),

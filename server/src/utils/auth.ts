@@ -1,5 +1,5 @@
 import argon2 from "argon2";
-import type { RequestHandler } from "express";
+import type { NextFunction, RequestHandler } from "express";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import userRepository from "../modules/user/userRepository";
 
@@ -108,7 +108,9 @@ const verifyRequesterId: RequestHandler = async (req, res, next) => {
       throw new Error("Token as been modified ❌");
     }
 
-    req.body.verifyToken = verifyToken;
+    const { userId, userStatus } = verifyToken as JwtPayload;
+
+    req.requester = { userId: userId, userStatus: userStatus };
     next();
   } catch (err) {
     next(err);

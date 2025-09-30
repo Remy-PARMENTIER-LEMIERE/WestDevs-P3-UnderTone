@@ -46,7 +46,10 @@ const artistSearch: RequestHandler = async (req, res, next) => {
 };
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const { userId, userStatus } = req.body.verifyToken as JwtPayload;
+    if (!req.requester) {
+      throw new Error("Utilisateur non-authentifié");
+    }
+    const { userId, userStatus } = req.requester;
 
     if (userStatus === "artist") {
       if (!req.body.name) {

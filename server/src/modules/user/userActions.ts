@@ -4,7 +4,10 @@ import userRepository from "./userRepository";
 
 const readProfile: RequestHandler = async (req, res, next) => {
   try {
-    const { userId } = req.body.verifyToken as JwtPayload;
+    if (!req.requester) {
+      throw new Error("Utilisateur non-authentifié");
+    }
+    const { userId } = req.requester;
     const data = await userRepository.readProfileById(Number(userId));
 
     if (!data) {
@@ -19,7 +22,10 @@ const readProfile: RequestHandler = async (req, res, next) => {
 
 const readDataPresence: RequestHandler = async (req, res, next) => {
   try {
-    const { userId, userStatus } = req.body.verifyToken as JwtPayload;
+    if (!req.requester) {
+      throw new Error("Utilisateur non-authentifié");
+    }
+    const { userId, userStatus } = req.requester;
 
     const searchedStatus = ["artist", "concert_place"];
 
@@ -50,9 +56,12 @@ const readDataPresence: RequestHandler = async (req, res, next) => {
 
 const edit: RequestHandler = async (req, res, next) => {
   try {
+    if (!req.requester) {
+      throw new Error("Utilisateur non-authentifié");
+    }
     const { id } = req.params;
     const { profile_picture, birthdate } = req.body;
-    const { userId } = req.body.verifyToken as JwtPayload;
+    const { userId } = req.requester;
 
     if (Number(userId) !== Number(id)) {
       throw new Error("Vous n'êtes pas autorisé à modifier ce compte.");
