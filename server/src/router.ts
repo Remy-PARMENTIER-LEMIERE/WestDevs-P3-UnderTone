@@ -23,7 +23,7 @@ router.get(
 );
 router.get("/user/profile", auth.verifyRequesterId, userActions.readProfile);
 router.patch(
-  "/complete/user/:id",
+  "/user/profile",
   auth.verifyRequesterId,
   files.uploadUserProfilePicture,
   files.userProfilePicture,

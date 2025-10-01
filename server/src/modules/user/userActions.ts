@@ -59,16 +59,11 @@ const edit: RequestHandler = async (req, res, next) => {
     if (!req.requester) {
       throw new Error("Utilisateur non-authentifié");
     }
-    const { id } = req.params;
     const { profile_picture, birthdate } = req.body;
     const { userId } = req.requester;
 
-    if (Number(userId) !== Number(id)) {
-      throw new Error("Vous n'êtes pas autorisé à modifier ce compte.");
-    }
-
     const updateResult = await userRepository.update(
-      Number(userId),
+      userId,
       profile_picture,
       birthdate,
     );

@@ -105,7 +105,7 @@ const verifyRequesterId: RequestHandler = async (req, res, next) => {
 
     const verifyToken = jwt.verify(token, secretKey);
     if (!verifyToken) {
-      throw new Error("Token as been modified ❌");
+      throw new Error("Token as been modified or expired ❌");
     }
 
     const { userId, userStatus } = verifyToken as JwtPayload;
