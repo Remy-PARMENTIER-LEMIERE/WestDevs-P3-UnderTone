@@ -1,16 +1,14 @@
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import InputProfilePicture from "../../components/FormInputs/InputProfilePicture/InputProfilePicture";
-import { useAuth } from "../../services/AuthContext";
 import InputBirthDate from "./InputBirthDate/InputBirthDate";
 import "./UserCreation.css";
 
 function UserCreation() {
   const navigate = useNavigate();
-  const { user } = useAuth();
 
   const handleSubmit = (formData: FormData) => {
-    fetch(`http://localhost:3310/api/complete/user/${user?.id}`, {
+    fetch("http://localhost:3310/api/user/profile", {
       method: "PATCH",
       body: formData,
       credentials: "include",

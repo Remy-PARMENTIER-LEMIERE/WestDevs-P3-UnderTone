@@ -19,7 +19,10 @@ const read: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const concert_place_id = Number(req.body.verifyToken.userId);
+    if (!req.requester) {
+      throw new Error("Utilisateur non-authentifié");
+    }
+    const concert_place_id = Number(req.requester.userId);
     const { name, date, hour, event_picture, description } = req.body;
 
     const eventId = await eventRepository.createEvent(

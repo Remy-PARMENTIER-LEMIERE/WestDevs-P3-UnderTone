@@ -23,10 +23,10 @@ router.get(
 );
 router.get("/user/profile", auth.verifyRequesterId, userActions.readProfile);
 router.patch(
-  "/complete/user/:id",
+  "/user/profile",
+  auth.verifyRequesterId,
   files.uploadUserProfilePicture,
   files.userProfilePicture,
-  auth.verifyRequesterId,
   userActions.edit,
 );
 router.get("/refresh", auth.refreshToken);
@@ -42,9 +42,9 @@ router.post("/music-styles", musicStyleActions.add);
 
 router.post(
   "/new/artist",
+  auth.verifyRequesterId,
   files.uploadArtistFiles,
   files.artistFiles,
-  auth.verifyRequesterId,
   artistActions.add,
 );
 
@@ -54,9 +54,9 @@ import typeActions from "./modules/type/typeActions";
 router.get("/concert-place/:id", concertPlaceActions.read);
 router.post(
   "/new/concert-place",
+  auth.verifyRequesterId,
   files.uploadConcertPlaceFiles,
   files.concertPlaceFiles,
-  auth.verifyRequesterId,
   concertPlaceActions.add,
 );
 router.get("/types", typeActions.browse);
@@ -69,9 +69,9 @@ router.get("/event/:id", eventActions.read);
 router.get("/search/event", eventActions.eventSearch);
 router.post(
   "/new/event",
+  auth.verifyRequesterId,
   files.uploadEventFile,
   files.eventFile,
-  auth.verifyRequesterId,
   eventActions.add,
 );
 

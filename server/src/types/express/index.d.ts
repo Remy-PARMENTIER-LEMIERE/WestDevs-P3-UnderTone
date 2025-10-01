@@ -7,7 +7,7 @@ declare global {
       /* ************************************************************************* */
       // Add your custom properties here, for example:
       //
-      // user?: { ... }
+      requester?: { userId: number; userStatus: string };
       /* ************************************************************************* */
     }
   }

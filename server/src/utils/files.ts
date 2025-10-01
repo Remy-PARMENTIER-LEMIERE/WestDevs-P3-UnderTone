@@ -1,6 +1,6 @@
 import path from "node:path";
 import type { RequestHandler } from "express";
-import multer from "multer";
+import multer, { MulterError } from "multer";
 
 const storage = multer.diskStorage({
   destination(req, file, callback) {
@@ -14,19 +14,38 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const MAX_FILE_SIZE = 2 * 1024 * 1024;
+
+const uploadUser = multer({
+  storage: storage,
+  fileFilter(req, file, callback) {
+    const allowedMimeTypes = ["image/jpeg", "image/jpg", "image/png"];
+
+    if (allowedMimeTypes.includes(file.mimetype)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Le type de fichier n'est pas supporté"));
+    }
+  },
+  limits: { fileSize: MAX_FILE_SIZE },
+});
 
 const uploadUserProfilePicture: RequestHandler = (req, res, next) => {
-  const uploader = upload.single("profile_picture");
+  const uploader = uploadUser.single("profile_picture");
 
   uploader(req, res, (err) => {
     if (err) {
-      if (err instanceof multer.MulterError) {
-        return res
-          .status(400)
-          .json({ message: `File upload error: ${err.message}` });
+      switch (err) {
+        case err instanceof MulterError && err.code === "LIMIT_FILE_SIZE":
+          return res.status(400).json({ message: "Fichier trop volumineux" });
+        case err instanceof multer.MulterError:
+          return res
+            .status(400)
+            .json({ message: `File upload error: ${err.message}` });
+
+        default:
+          return next(err);
       }
-      return next(err);
     }
     next();
   });
@@ -42,6 +61,11 @@ const userProfilePicture: RequestHandler = (req, res, next) => {
     next(err);
   }
 };
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: MAX_FILE_SIZE },
+});
 
 const uploadConcertPlaceFiles: RequestHandler = (req, res, next) => {
   const uploader = upload.fields([

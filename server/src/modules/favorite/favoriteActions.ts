@@ -3,7 +3,10 @@ import favoriteRepository from "./favoriteRepository";
 
 const browseTypedFavorites: RequestHandler = async (req, res, next) => {
   try {
-    const { userId } = req.body.verifyToken;
+    if (!req.requester) {
+      throw new Error("Utilisateur non-authentifié");
+    }
+    const { userId } = req.requester;
     const { targetStatus } = req.params;
     const valid = ["artist", "concert_place", "event"];
 
@@ -32,7 +35,10 @@ const readFavorite: RequestHandler = async (req, res) => {
     const { targetId, targetStatus } = req.params;
 
     const valid = ["artist", "concert_place", "event"];
-    const { userId } = req.body.verifyToken;
+    if (!req.requester) {
+      throw new Error("Utilisateur non-authentifié");
+    }
+    const { userId } = req.requester;
 
     if (!valid.includes(targetStatus)) {
       res.status(400).json({ error: "Target type invalide" });
@@ -56,7 +62,10 @@ const readFavorite: RequestHandler = async (req, res) => {
 
 const addFavorite: RequestHandler = async (req, res) => {
   try {
-    const { userId } = req.body.verifyToken;
+    if (!req.requester) {
+      throw new Error("Utilisateur non-authentifié");
+    }
+    const { userId } = req.requester;
     const { targetId, targetStatus } = req.params;
     const valid = ["artist", "concert_place", "event"];
 
@@ -84,7 +93,10 @@ const addFavorite: RequestHandler = async (req, res) => {
 
 const deleteFavorite: RequestHandler = async (req, res) => {
   try {
-    const { userId } = req.body.verifyToken;
+    if (!req.requester) {
+      throw new Error("Utilisateur non-authentifié");
+    }
+    const { userId } = req.requester;
     const { targetId, targetStatus } = req.params;
     const valid = ["artist", "concert_place", "event"];
 
