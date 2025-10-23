@@ -44,6 +44,7 @@ const login: RequestHandler = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: false,
+      sameSite: "strict",
     });
 
     const { id, status } = user;
@@ -60,13 +61,11 @@ const login: RequestHandler = async (req, res) => {
 const refreshToken: RequestHandler = (req, res, next) => {
   try {
     const token = req.cookies.token;
-
     if (!token) {
       throw new Error("A token must be provided");
     }
 
     const secretKey = process.env.APP_SECRET;
-
     if (!secretKey) {
       throw new Error("A secret must be provided");
     }
@@ -79,7 +78,11 @@ const refreshToken: RequestHandler = (req, res, next) => {
       expiresIn: "1d",
     });
 
-    res.cookie("token", newToken);
+    res.cookie("token", newToken, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "strict",
+    });
     res.status(200).json({
       infos: "Refresh Token successful",
       result: { id: userId, status: userStatus },
