@@ -24,7 +24,7 @@ function UserCreation() {
   };
 
   return (
-    <main className="new-user">
+    <main className="update-user">
       <section>
         <h1>Mon Profil</h1>
         <form action={handleSubmit}>
