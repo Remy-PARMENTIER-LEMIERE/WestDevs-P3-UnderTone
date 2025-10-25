@@ -6,7 +6,13 @@ function InputBirthDate() {
 
   return (
     <div className="input-group">
-      <input type="date" name="birthdate" id="birthdate" max={todayString} />
+      <input
+        type="date"
+        name="birthdate"
+        id="birthdate"
+        max={todayString}
+        placeholder=""
+      />
       <label htmlFor="birthdate">Date de naissance</label>
     </div>
   );
